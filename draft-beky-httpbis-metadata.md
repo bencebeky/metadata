@@ -123,9 +123,10 @@ METADATA HTTP/2 Frame {
 
 The METADATA frame defines the following flag:
 
-  : END_METADATA (0x04): When set, the END_METADATA flag indicates that this
-  frame contains the entire encoded list of key-value pairs and is not followed
-  by any CONTINUATION frames.
+END_METADATA (0x04):
+  : When set, the END_METADATA flag indicates that this frame contains the
+  entire encoded list of key-value pairs and is not followed by any CONTINUATION
+  frames.
 
   : A METADATA frame without the END_METADATA flag set MUST be followed by a
   CONTINUATION frame for the same stream. A receiver MUST treat the receipt of
