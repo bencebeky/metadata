@@ -1,0 +1,222 @@
+
+
+
+
+HTTP                                                              B. Roy
+Internet-Draft                                                Google LLC
+Intended status: Standards Track                            28 June 2022
+Expires: 30 December 2022
+
+
+                  METADATA frame for HTTP/2 and HTTP/3
+                   draft-beky-httpbis-metadata-latest
+
+Abstract
+
+   This document describes a mechanism to send meta information over
+   HTTP/2 and HTTP/3 connections.
+
+Discussion Venues
+
+   This note is to be removed before publishing as an RFC.
+
+   Discussion of this document takes place on the HTTP Working Group
+   mailing list (ietf-http-wg@w3.org), which is archived at
+   https://lists.w3.org/Archives/Public/ietf-http-wg/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/bencebeky/metadata.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 30 December 2022.
+
+Copyright Notice
+
+   Copyright (c) 2022 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+   2.  Conventions and Definitions
+   3.  METADATA frame
+     3.1.  METADATA HTTP/2 frame
+     3.2.  METADATA HTTP/3 frame
+   4.  Negotiating METADATA
+   5.  Security Considerations
+   6.  IANA Considerations
+   7.  Normative References
+   Acknowledgments
+   Author's Address
+
+1.  Introduction
+
+   HTTP/2 and HTTP/3 connections are capable of transporting multiple
+   HTTP messages, which are composed of field sections and bodies.  This
+   document described a mechanism to convey additional information about
+   HTTP messages or the entire connection, in a way that does not change
+   HTTP semantics, over the same connection.
+
+2.  Conventions and Definitions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+3.  METADATA frame
+
+   Both HTTP/2 and HTTP/3 specifications allow the protocol to be
+   extended.
+
+   TODO https://httpwg.org/specs/rfc7540.html#extensibility Section 5.5
+   TODO https://www.rfc-editor.org/rfc/rfc9114.html#name-extensions-to-
+   http-3 Section 9
+
+   This document defines a new frame type: METADATA.  The payload of a
+   METADATA frame is an encoded list of key-value pairs.  METADATA
+   frames do not change HTTP semantics.
+
+3.1.  METADATA HTTP/2 frame
+
+   The type of METADATA HTTP/2 frame is 0x4d.
+
+   METADATA HTTP/2 Frame {
+     Length (24),
+     Type (8) = 0x4d,
+
+     Flags (8),
+
+     Reserved(1),
+     Stream Identifier (31),
+
+     Encoded key-value pairs (..),
+   }
+
+                      Figure 1: METADATA HTTP/2 frame
+
+   The METADATA frame defines the following flag:  END_METADATA (0x04):
+      When set, the END_METADATA flag indicates that this frame contains
+      the entire encoded list of key-value pairs and is not followed by
+      any CONTINUATION frames.
+
+   A METADATA frame without the END_METADATA flag set MUST be followed
+   by a CONTINUATION frame for the same stream.  A receiver MUST treat
+   the receipt of any other type of frame or a frame on a different
+   stream as a connection error (Section 5.4.1) of type PROTOCOL_ERROR.
+   In this case, the CONTINUATION frame or frames will carry the
+   remaining of the encoded key-value pairs instead of an encoded header
+   block.  The CONTINUATION frame with the last fragment of the encoded
+   key-value pairs has the END_HEADERS frag set to indicate the
+   completion of the encoded key-value pairs.  TODO: find a succinct
+   name for encoded key-value pairs that clearly reflects that these are
+   not headers.
+
+   METADATA frames are allowed on any stream.  METADATA frames on stream
+   0 carry information pertaining to the whole connections.  METADATA
+   frames on any other stream are associated with the exchange carried
+   by that stream.
+
+   METADATA frames can be sent on a stream in any state.  METADATA
+   frames do not alter the state of a stream.
+
+   METADATA frames obey the maximum frame size set by
+   SETTINGS_MAX_FRAME_SIZE.
+
+   METADATA frames are not subject to flow control.
+
+   The payload of METADATA frames is a list of key-value pairs encoded
+   using HPACK instructions.  An endpoint MUST not use any HPACK
+   instructions that change the dynamic table.
+
+3.2.  METADATA HTTP/3 frame
+
+   The type of METADATA HTTP/3 frame is 0x4d.
+
+   METADATA HTTP/3 Frame {
+     Type (i) = 0x4d,
+     Length (i),
+
+     Encoded key-value pairs (..),
+   }
+
+                      Figure 2: METADATA HTTP/3 frame
+
+   The payload of METADATA frames is a list of key-value pairs encoded
+   using QPACK representations.  An endpoint MUST not use any QPACK
+   representations that reference the dynamic table.  Therefore the
+   Required Insert Count is be zero, and decoding METADATA frame
+   payloads do not elicit instructions on the QPACK decoder stream.
+
+4.  Negotiating METADATA
+
+   This document defines a new HTTP/2 setting identifier,
+   SETTINGS_ENABLE_METADATA, with value 0x4d44.  It also defines a new
+   HTTP/3 setting identifier, SETTINGS_ENABLE_METADATA, with value
+   0x4d44.
+
+   An endpoint that supports METADATA frames SHOULD advertise that by
+   sending SETTINGS_ENABLE_METADATA with value 1 on each connection.  A
+   value of 0 indicates that the endpoint does not support METADATA
+   frames.  A value other than 0 or 1 MUST not be sent.  For HTTP/2,
+   SETTINGS_ENABLE_METADATA MUST not be sent in any SETTINGS frame other
+   than the first one.
+
+   An endpoint MAY send METADATA frames before it learns that the peer
+   supports them.  For example, a proxy might chose to forward METADATA
+   frames, or it might chose to buffer them, before it receives a
+   SETTINGS frame.  An endpoint SHOULD NOT send METADATA frames after it
+   learns that the peer does not support them.
+
+5.  Security Considerations
+
+   TODO Security
+
+6.  IANA Considerations
+
+   TODO IANA: two frame types and two setting identifiers.
+
+7.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+Acknowledgments
+
+   TODO acknowledge.
+
+Author's Address
+
+   Biren Roy
+   Google LLC
+   Email: birenroy@google.com
