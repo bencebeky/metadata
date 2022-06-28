@@ -21,6 +21,7 @@ author:
     organization: "Google LLC"
     email: bnc@google.com
 
+ -
     ins: "B. Roy"
     name: "Biren Roy"
     organization: "Google LLC"
@@ -28,13 +29,46 @@ author:
 
 normative:
 
+  RFC9113:
+    display: HTTP/2
+    title: "HTTP/2"
+    date: 1970-01-01
+    seriesinfo:
+      RFC: 9113
+      DOI: 10.17487/RFC9113
+    author:
+      -
+          ins: M. Thomson
+          name: Martin Thomson
+          org: Mozilla
+          role: editor
+      -
+          ins: C. Benfield
+          name: Cory Benfield
+          org: Apple Inc.
+          role: editor
+
+  RFC9114:
+    display: HTTP/3
+    title: "Hypertext Transfer Protocol Version 3 (HTTP/3)"
+    date: 1970-01-01
+    seriesinfo:
+      RFC: 9114
+      DOI: 10.17487/RFC9114
+    author:
+      -
+          ins: M. Bishop
+          name: Mike Bishop
+          org: Akamai Technologies
+          role: editor
+
 informative:
 
 
 --- abstract
 
-This document describes a mechanism to send meta information over HTTP/2 and
-HTTP/3 connections.
+This document describes a mechanism to send meta information over HTTP/2
+({{RFC9113}}) and HTTP/3 ({{RFC9114}}) connections.  TODO elaborate
 
 
 --- middle
@@ -45,8 +79,11 @@ HTTP/2 and HTTP/3 connections are capable of transporting multiple HTTP
 messages, which are composed of field sections and bodies.  This document
 described a mechanism to convey additional information about HTTP messages or
 the entire connection, in a way that does not change HTTP semantics, over the
-same connection.
+same connection.  TODO add motivating example
 
+A proxy MAY consume METADATA frames, pass them along unmodified, modify the
+payloads, or emit new METADATA frames, depending on the specific needs of the
+application.
 
 # Conventions and Definitions
 
@@ -55,15 +92,15 @@ same connection.
 
 # METADATA frame
 
-Both HTTP/2 and HTTP/3 specifications allow the protocol to be extended.
+Both HTTP/2 and HTTP/3 specifications allow the protocol to be extended, see
+{{Section 5.5 of RFC9113}} and {{Section 9 of RFC9114}}.
 
-TODO https://httpwg.org/specs/rfc7540.html#extensibility Section 5.5
-TODO https://www.rfc-editor.org/rfc/rfc9114.html#name-extensions-to-http-3
-Section 9
+This document defines a new frame type: METADATA.
 
-This document defines a new frame type: METADATA.  The payload of a METADATA
-frame is an encoded list of key-value pairs.  METADATA frames do not change
-HTTP semantics.
+The payload of a METADATA frame is an encoded list of key-value pairs.  Each key
+and value is a sequence of bytes with no restriction on the allowed values.
+
+METADATA frames do not change HTTP semantics.
 
 ## METADATA HTTP/2 frame
 
@@ -90,7 +127,7 @@ The METADATA frame defines the following flag:
   frame contains the entire encoded list of key-value pairs and is not followed
   by any CONTINUATION frames.
 
-  A METADATA frame without the END_METADATA flag set MUST be followed by a
+  : A METADATA frame without the END_METADATA flag set MUST be followed by a
   CONTINUATION frame for the same stream. A receiver MUST treat the receipt of
   any other type of frame or a frame on a different stream as a connection error
   (Section 5.4.1) of type PROTOCOL_ERROR.  In this case, the CONTINUATION frame
@@ -101,11 +138,11 @@ The METADATA frame defines the following flag:
   encoded key-value pairs that clearly reflects that these are not headers.
 
 METADATA frames are allowed on any stream.  METADATA frames on stream 0 carry
-information pertaining to the whole connections.  METADATA frames on any other
+information pertaining to the whole connection.  METADATA frames on any other
 stream are associated with the exchange carried by that stream.
 
-METADATA frames can be sent on a stream in any state.  METADATA frames do not
-alter the state of a stream.
+METADATA frames MUST NOT be sent on a stream in closed or half closed (local)
+state.  METADATA frames do not alter the state of a stream.
 
 METADATA frames obey the maximum frame size set by SETTINGS_MAX_FRAME_SIZE.
 
@@ -128,6 +165,11 @@ METADATA HTTP/3 Frame {
 }
 ~~~~~~~~~~
 {: title="METADATA HTTP/3 frame"}
+
+METADATA frames are allowed on any stream that uses HTTP/3 frames.  METADATA
+frames on the control stream carry information pertaining to the whole
+connection.  METADATA frames on a request stream or a push stream are associated
+with the exchange carried by that stream.
 
 The payload of METADATA frames is a list of key-value pairs encoded using QPACK
 representations.  An endpoint MUST not use any QPACK representations that
