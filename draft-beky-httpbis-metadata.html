@@ -5,10 +5,11 @@
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
 <title>METADATA frame for HTTP/2 and HTTP/3</title>
+<meta content="Bence Béky" name="author">
 <meta content="Biren Roy" name="author">
 <meta content="
-       This document describes a mechanism to send meta information over HTTP/2 and
-HTTP/3 connections. 
+       This document describes a mechanism to send meta information over HTTP/2
+( ) and HTTP/3 ( ) connections.  TODO elaborate 
     " name="description">
 <meta content="xml2rfc 3.12.10" name="generator">
 <meta content="Internet-Draft" name="keyword">
@@ -1030,7 +1031,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <td class="right">June 2022</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Roy</td>
+<td class="left">Béky &amp; Roy</td>
 <td class="center">Expires 30 December 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1050,8 +1051,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
 <dd class="expires"><time datetime="2022-12-30">30 December 2022</time></dd>
-<dt class="label-authors">Author:</dt>
+<dt class="label-authors">Authors:</dt>
 <dd class="authors">
+<div class="author">
+      <div class="author-name">B. Béky</div>
+<div class="org">Google LLC</div>
+</div>
 <div class="author">
       <div class="author-name">B. Roy</div>
 <div class="org">Google LLC</div>
@@ -1062,8 +1067,8 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <h1 id="title">METADATA frame for HTTP/2 and HTTP/3</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document describes a mechanism to send meta information over HTTP/2 and
-HTTP/3 connections.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document describes a mechanism to send meta information over HTTP/2
+(<span>[<a href="#RFC9113" class="xref">HTTP/2</a>]</span>) and HTTP/3 (<span>[<a href="#RFC9114" class="xref">HTTP/3</a>]</span>) connections.  TODO elaborate<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1157,7 +1162,7 @@ HTTP/3 connections.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
             <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1172,7 +1177,10 @@ HTTP/3 connections.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 messages, which are composed of field sections and bodies.  This document
 described a mechanism to convey additional information about HTTP messages or
 the entire connection, in a way that does not change HTTP semantics, over the
-same connection.<a href="#section-1-1" class="pilcrow">¶</a></p>
+same connection.  TODO add motivating example<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">A proxy <span class="bcp14">MAY</span> consume METADATA frames, pass them along unmodified, modify the
+payloads, or emit new METADATA frames, depending on the specific needs of the
+application.<a href="#section-1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1191,13 +1199,12 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-metadata-frame">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-metadata-frame" class="section-name selfRef">METADATA frame</a>
       </h2>
-<p id="section-3-1">Both HTTP/2 and HTTP/3 specifications allow the protocol to be extended.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">TODO https://httpwg.org/specs/rfc7540.html#extensibility Section 5.5
-TODO https://www.rfc-editor.org/rfc/rfc9114.html#name-extensions-to-http-3
-Section 9<a href="#section-3-2" class="pilcrow">¶</a></p>
-<p id="section-3-3">This document defines a new frame type: METADATA.  The payload of a METADATA
-frame is an encoded list of key-value pairs.  METADATA frames do not change
-HTTP semantics.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-1">Both HTTP/2 and HTTP/3 specifications allow the protocol to be extended, see
+<span><a href="https://rfc-editor.org/rfc/rfc9113#section-5.5" class="relref">Section 5.5</a> of [<a href="#RFC9113" class="xref">HTTP/2</a>]</span> and <span><a href="https://rfc-editor.org/rfc/rfc9114#section-9" class="relref">Section 9</a> of [<a href="#RFC9114" class="xref">HTTP/3</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">This document defines a new frame type: METADATA.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">The payload of a METADATA frame is an encoded list of key-value pairs.  Each key
+and value is a sequence of bytes with no restriction on the allowed values.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-4">METADATA frames do not change HTTP semantics.<a href="#section-3-4" class="pilcrow">¶</a></p>
 <div id="metadata-http2-frame">
 <section id="section-3.1">
         <h3 id="name-metadata-http-2-frame">
@@ -1230,9 +1237,10 @@ METADATA HTTP/2 Frame {
   frame contains the entire encoded list of key-value pairs and is not followed
   by any CONTINUATION frames.<a href="#section-3.1-3.2.1" class="pilcrow">¶</a></p>
 </dd>
-        <dd class="break"></dd>
-</dl>
-<p id="section-3.1-4">A METADATA frame without the END_METADATA flag set <span class="bcp14">MUST</span> be followed by a
+          <dd class="break"></dd>
+<dt id="section-3.1-3.3"></dt>
+          <dd style="margin-left: 1.5em" id="section-3.1-3.4">
+            <p id="section-3.1-3.4.1">A METADATA frame without the END_METADATA flag set <span class="bcp14">MUST</span> be followed by a
   CONTINUATION frame for the same stream. A receiver <span class="bcp14">MUST</span> treat the receipt of
   any other type of frame or a frame on a different stream as a connection error
   (Section 5.4.1) of type PROTOCOL_ERROR.  In this case, the CONTINUATION frame
@@ -1240,17 +1248,20 @@ METADATA HTTP/2 Frame {
   an encoded header block.  The CONTINUATION frame with the last fragment of the
   encoded key-value pairs has the END_HEADERS frag set to indicate the
   completion of the encoded key-value pairs.  TODO: find a succinct name for
-  encoded key-value pairs that clearly reflects that these are not headers.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
-<p id="section-3.1-5">METADATA frames are allowed on any stream.  METADATA frames on stream 0 carry
-information pertaining to the whole connections.  METADATA frames on any other
-stream are associated with the exchange carried by that stream.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
-<p id="section-3.1-6">METADATA frames can be sent on a stream in any state.  METADATA frames do not
-alter the state of a stream.<a href="#section-3.1-6" class="pilcrow">¶</a></p>
-<p id="section-3.1-7">METADATA frames obey the maximum frame size set by SETTINGS_MAX_FRAME_SIZE.<a href="#section-3.1-7" class="pilcrow">¶</a></p>
-<p id="section-3.1-8">METADATA frames are not subject to flow control.<a href="#section-3.1-8" class="pilcrow">¶</a></p>
-<p id="section-3.1-9">The payload of METADATA frames is a list of key-value pairs encoded using HPACK
+  encoded key-value pairs that clearly reflects that these are not headers.<a href="#section-3.1-3.4.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
+<p id="section-3.1-4">METADATA frames are allowed on any stream.  METADATA frames on stream 0 carry
+information pertaining to the whole connection.  METADATA frames on any other
+stream are associated with the exchange carried by that stream.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+<p id="section-3.1-5">METADATA frames <span class="bcp14">MUST NOT</span> be sent on a stream in closed or half closed (local)
+state.  METADATA frames do not alter the state of a stream.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
+<p id="section-3.1-6">METADATA frames obey the maximum frame size set by SETTINGS_MAX_FRAME_SIZE.<a href="#section-3.1-6" class="pilcrow">¶</a></p>
+<p id="section-3.1-7">METADATA frames are not subject to flow control.<a href="#section-3.1-7" class="pilcrow">¶</a></p>
+<p id="section-3.1-8">The payload of METADATA frames is a list of key-value pairs encoded using HPACK
 instructions.  An endpoint <span class="bcp14">MUST</span> not use any HPACK instructions that change the
-dynamic table.<a href="#section-3.1-9" class="pilcrow">¶</a></p>
+dynamic table.<a href="#section-3.1-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="metadata-http3-frame">
@@ -1273,11 +1284,15 @@ METADATA HTTP/3 Frame {
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
 <a href="#name-metadata-http-3-frame-2" class="selfRef">METADATA HTTP/3 frame</a>
           </figcaption></figure>
-<p id="section-3.2-3">The payload of METADATA frames is a list of key-value pairs encoded using QPACK
+<p id="section-3.2-3">METADATA frames are allowed on any stream that uses HTTP/3 frames.  METADATA
+frames on the control stream carry information pertaining to the whole
+connection.  METADATA frames on a request stream or a push stream are associated
+with the exchange carried by that stream.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
+<p id="section-3.2-4">The payload of METADATA frames is a list of key-value pairs encoded using QPACK
 representations.  An endpoint <span class="bcp14">MUST</span> not use any QPACK representations that
 reference the dynamic table.  Therefore the Required Insert Count is be zero,
 and decoding METADATA frame payloads do not elicit instructions on the QPACK decoder
-stream.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
+stream.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1321,6 +1336,14 @@ chose to buffer them, before it receives a SETTINGS frame.  An endpoint <span cl
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
       </h2>
 <dl class="references">
+<dt id="RFC9113">[HTTP/2]</dt>
+      <dd>
+<span class="refAuthor">Thomson, M., Ed.</span> and <span class="refAuthor">C. Benfield, Ed.</span>, <span class="refTitle">"HTTP/2"</span>, <span class="seriesInfo">RFC 9113</span>, <span class="seriesInfo">DOI 10.17487/RFC9113</span>, <time datetime="1970-01-01" class="refDate">1 January 1970</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9113">https://www.rfc-editor.org/rfc/rfc9113</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9114">[HTTP/3]</dt>
+      <dd>
+<span class="refAuthor">Bishop, M., Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol Version 3 (HTTP/3)"</span>, <span class="seriesInfo">RFC 9114</span>, <span class="seriesInfo">DOI 10.17487/RFC9114</span>, <time datetime="1970-01-01" class="refDate">1 January 1970</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9114">https://www.rfc-editor.org/rfc/rfc9114</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
       <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
@@ -1341,9 +1364,17 @@ chose to buffer them, before it receives a SETTINGS frame.  An endpoint <span cl
 </div>
 <div id="authors-addresses">
 <section id="appendix-B">
-      <h2 id="name-authors-address">
-<a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Bence Béky</span></div>
+<div dir="auto" class="left"><span class="org">Google LLC</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:bnc@google.com" class="email">bnc@google.com</a>
+</div>
+</address>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Biren Roy</span></div>
 <div dir="auto" class="left"><span class="org">Google LLC</span></div>

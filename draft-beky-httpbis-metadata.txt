@@ -2,10 +2,10 @@
 
 
 
-HTTP                                                              B. Roy
-Internet-Draft                                                Google LLC
-Intended status: Standards Track                            28 June 2022
-Expires: 30 December 2022
+HTTP                                                             B. Béky
+Internet-Draft                                                    B. Roy
+Intended status: Standards Track                              Google LLC
+Expires: 30 December 2022                                   28 June 2022
 
 
                   METADATA frame for HTTP/2 and HTTP/3
@@ -14,7 +14,7 @@ Expires: 30 December 2022
 Abstract
 
    This document describes a mechanism to send meta information over
-   HTTP/2 and HTTP/3 connections.
+   HTTP/2 ([HTTP/2]) and HTTP/3 ([HTTP/3]) connections.  TODO elaborate
 
 Discussion Venues
 
@@ -70,7 +70,7 @@ Table of Contents
    6.  IANA Considerations
    7.  Normative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -78,7 +78,12 @@ Table of Contents
    HTTP messages, which are composed of field sections and bodies.  This
    document described a mechanism to convey additional information about
    HTTP messages or the entire connection, in a way that does not change
-   HTTP semantics, over the same connection.
+   HTTP semantics, over the same connection.  TODO add motivating
+   example
+
+   A proxy MAY consume METADATA frames, pass them along unmodified,
+   modify the payloads, or emit new METADATA frames, depending on the
+   specific needs of the application.
 
 2.  Conventions and Definitions
 
@@ -91,15 +96,15 @@ Table of Contents
 3.  METADATA frame
 
    Both HTTP/2 and HTTP/3 specifications allow the protocol to be
-   extended.
+   extended, see Section 5.5 of [HTTP/2] and Section 9 of [HTTP/3].
 
-   TODO https://httpwg.org/specs/rfc7540.html#extensibility Section 5.5
-   TODO https://www.rfc-editor.org/rfc/rfc9114.html#name-extensions-to-
-   http-3 Section 9
+   This document defines a new frame type: METADATA.
 
-   This document defines a new frame type: METADATA.  The payload of a
-   METADATA frame is an encoded list of key-value pairs.  METADATA
-   frames do not change HTTP semantics.
+   The payload of a METADATA frame is an encoded list of key-value
+   pairs.  Each key and value is a sequence of bytes with no restriction
+   on the allowed values.
+
+   METADATA frames do not change HTTP semantics.
 
 3.1.  METADATA HTTP/2 frame
 
@@ -124,25 +129,25 @@ Table of Contents
       the entire encoded list of key-value pairs and is not followed by
       any CONTINUATION frames.
 
-   A METADATA frame without the END_METADATA flag set MUST be followed
-   by a CONTINUATION frame for the same stream.  A receiver MUST treat
-   the receipt of any other type of frame or a frame on a different
-   stream as a connection error (Section 5.4.1) of type PROTOCOL_ERROR.
-   In this case, the CONTINUATION frame or frames will carry the
-   remaining of the encoded key-value pairs instead of an encoded header
-   block.  The CONTINUATION frame with the last fragment of the encoded
-   key-value pairs has the END_HEADERS frag set to indicate the
-   completion of the encoded key-value pairs.  TODO: find a succinct
-   name for encoded key-value pairs that clearly reflects that these are
-   not headers.
+      A METADATA frame without the END_METADATA flag set MUST be
+      followed by a CONTINUATION frame for the same stream.  A receiver
+      MUST treat the receipt of any other type of frame or a frame on a
+      different stream as a connection error (Section 5.4.1) of type
+      PROTOCOL_ERROR.  In this case, the CONTINUATION frame or frames
+      will carry the remaining of the encoded key-value pairs instead of
+      an encoded header block.  The CONTINUATION frame with the last
+      fragment of the encoded key-value pairs has the END_HEADERS frag
+      set to indicate the completion of the encoded key-value pairs.
+      TODO: find a succinct name for encoded key-value pairs that
+      clearly reflects that these are not headers.
 
    METADATA frames are allowed on any stream.  METADATA frames on stream
-   0 carry information pertaining to the whole connections.  METADATA
+   0 carry information pertaining to the whole connection.  METADATA
    frames on any other stream are associated with the exchange carried
    by that stream.
 
-   METADATA frames can be sent on a stream in any state.  METADATA
-   frames do not alter the state of a stream.
+   METADATA frames MUST NOT be sent on a stream in closed or half closed
+   (local) state.  METADATA frames do not alter the state of a stream.
 
    METADATA frames obey the maximum frame size set by
    SETTINGS_MAX_FRAME_SIZE.
@@ -165,6 +170,11 @@ Table of Contents
    }
 
                       Figure 2: METADATA HTTP/3 frame
+
+   METADATA frames are allowed on any stream that uses HTTP/3 frames.
+   METADATA frames on the control stream carry information pertaining to
+   the whole connection.  METADATA frames on a request stream or a push
+   stream are associated with the exchange carried by that stream.
 
    The payload of METADATA frames is a list of key-value pairs encoded
    using QPACK representations.  An endpoint MUST not use any QPACK
@@ -202,6 +212,14 @@ Table of Contents
 
 7.  Normative References
 
+   [HTTP/2]   Thomson, M., Ed. and C. Benfield, Ed., "HTTP/2", RFC 9113,
+              DOI 10.17487/RFC9113, 1 January 1970,
+              <https://www.rfc-editor.org/rfc/rfc9113>.
+
+   [HTTP/3]   Bishop, M., Ed., "Hypertext Transfer Protocol Version 3
+              (HTTP/3)", RFC 9114, DOI 10.17487/RFC9114, 1 January 1970,
+              <https://www.rfc-editor.org/rfc/rfc9114>.
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -215,7 +233,12 @@ Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
+
+   Bence Béky
+   Google LLC
+   Email: bnc@google.com
+
 
    Biren Roy
    Google LLC
