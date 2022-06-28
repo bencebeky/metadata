@@ -9,6 +9,7 @@ ipr: trust200902
 area: "Applications and Real-Time"
 workgroup: "HTTP"
 keyword: Internet-Draft
+submissiontype: IETF
 
 stand_alone: yes
 pi: [toc, sortrefs, symrefs]
@@ -138,7 +139,7 @@ stream.
 
 This document defines a new HTTP/2 setting identifier, SETTINGS_ENABLE_METADATA,
 with value 0x4d44.  It also defines a new HTTP/3 setting identifier,
-SETTINGS_ENABLE_METADATA, with value 0x4d44.  
+SETTINGS_ENABLE_METADATA, with value 0x4d44.
 
 An endpoint that supports METADATA frames SHOULD advertise that by sending
 SETTINGS_ENABLE_METADATA with value 1 on each connection.  A value of 0
