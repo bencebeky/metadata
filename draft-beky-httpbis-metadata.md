@@ -183,17 +183,17 @@ Reference: [[this document]]
 This document adds an entry to the "HTTP/2 Settings" registry originally defined
 in {{?RFC7540}} but updated to refer to {{RFC9113}} with the following parameters:
 
-Code:
-  :0x4d44
+*Code*:
+  : 0x4d44
 
-Name:
-  :SETTINGS_ENABLE_METADATA
+**Name**:
+  : SETTINGS_ENABLE_METADATA
 
 Initial Value:
-  :0
+  : 0
 
 Reference:
-  :[[this document]]
+  : [[this document]]
 
 ## HTTP/3
 
@@ -201,28 +201,28 @@ This document adds an entry to the "HTTP/3 Frame Types" registry defined in
 {{RFC9114}} with the following parameters:
 
 Value:
-  :0x4d
+  : 0x4d
 
 Frame Type:
-  :METADATA
+  : METADATA
 
 Reference:
-  :[[this document]]
+  : [[this document]]
 
 This document adds an entry to the "HTTP/3 Frame Types" registry defined in
 {{RFC9114}} with the following parameters:
 
 Value:
-  :0x4d44
+  : 0x4d44
 
 Settings Name:
-  :SETTINGS_ENABLE_METADATA
+  : SETTINGS_ENABLE_METADATA
 
 Default:
-  :0
+  : 0
 
 Reference:
-  :[[this document]]
+  : [[this document]]
 
 
 --- back
