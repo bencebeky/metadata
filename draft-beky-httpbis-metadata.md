@@ -27,70 +27,11 @@ author:
     organization: "Google LLC"
     email: birenroy@google.com
 
-normative:
-
-  RFC7540:
-    display: RFC7540
-    title: "Hypertext Transfer Protocol Version 2 (HTTP/2)"
-    date: 1970-01-01
-    seriesinfo:
-      RFC: 7540
-      DOI: 10.17487/RFC7540
-    author:
-      -
-          ins: M. Belshe
-          name: Mike Belshe
-          org: BitGo
-      -
-          R. Peon
-          name: Roberto Peon
-          org: Google, Inc
-      -
-          M. Thomson
-          name: Martin Thomson
-          org: Mozilla
-          role: editor
-
-  RFC9113:
-    display: HTTP/2
-    title: "HTTP/2"
-    date: 1970-01-01
-    seriesinfo:
-      RFC: 9113
-      DOI: 10.17487/RFC9113
-    author:
-      -
-          ins: M. Thomson
-          name: Martin Thomson
-          org: Mozilla
-          role: editor
-      -
-          ins: C. Benfield
-          name: Cory Benfield
-          org: Apple Inc.
-          role: editor
-
-  RFC9114:
-    display: HTTP/3
-    title: "Hypertext Transfer Protocol Version 3 (HTTP/3)"
-    date: 1970-01-01
-    seriesinfo:
-      RFC: 9114
-      DOI: 10.17487/RFC9114
-    author:
-      -
-          ins: M. Bishop
-          name: Mike Bishop
-          org: Akamai Technologies
-          role: editor
-
-informative:
-
 
 --- abstract
 
 This document describes a mechanism to send meta information over HTTP/2
-({{RFC9113}}) and HTTP/3 ({{RFC9114}}) connections.  TODO elaborate
+({{!RFC9113}}) and HTTP/3 ({{!RFC9114}}) connections.  TODO elaborate
 
 
 --- middle
@@ -115,7 +56,7 @@ application.
 # METADATA frame
 
 Both HTTP/2 and HTTP/3 specifications allow the protocol to be extended, see
-{{Section 5.5 of RFC9113}} and {{Section 9 of RFC9114}}.
+{{!Section 5.5 of RFC9113}} and {{!Section 9 of RFC9114}}.
 
 This document defines a new frame type: METADATA.
 
@@ -228,7 +169,7 @@ TODO Security
 ## HTTP/2
 
 This document adds an entry to the "HTTP/2 Frame Type" registry originally
-defined in {{RFC7540}} but updated to refer to {{HTTP/2}} with the following
+defined in {{?RFC7540}} but updated to refer to {{!RFC9113}} with the following
 parameters:
 
 Code: 0x4d
@@ -236,7 +177,7 @@ Frame Type: METADATA
 Reference: [[this document]]
 
 This document adds an entry to the "HTTP/2 Settings" registry originally defined
-in {{RFC7540}} but updated to refer to {{HTTP/2}} with the following parameters:
+in {{?RFC7540}} but updated to refer to {{!RFC9113}} with the following parameters:
 
 Code: 0x4d44
 Name: SETTINGS_ENABLE_METADATA
@@ -246,14 +187,14 @@ Reference: [[this document]]
 ## HTTP/3
 
 This document adds an entry to the "HTTP/3 Frame Types" registry defined in
-{{HTTP/3}} with the following parameters:
+{{!RFC9114}} with the following parameters:
 
 Value: 0x4d
 Frame Type: METADATA
 Reference: [[this document]]
 
 This document adds an entry to the "HTTP/3 Frame Types" registry defined in
-{{HTTP/3}} with the following parameters:
+{{!RFC9114}} with the following parameters:
 
 Value: 0x4d44
 Settings Name: SETTINGS_ENABLE_METADATA
