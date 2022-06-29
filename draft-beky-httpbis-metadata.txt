@@ -230,35 +230,35 @@ Table of Contents
    originally defined in [RFC7540] but updated to refer to [RFC9113]
    with the following parameters:
 
-   Code: :0x4d44
+   _Code_:  0x4d44
 
-   Name: :SETTINGS_ENABLE_METADATA
+   *Name*:  SETTINGS_ENABLE_METADATA
 
-   Initial Value: :0
+   Initial Value:  0
 
-   Reference: :[[this document]]
+   Reference:  [[this document]]
 
 6.2.  HTTP/3
 
    This document adds an entry to the "HTTP/3 Frame Types" registry
    defined in [RFC9114] with the following parameters:
 
-   Value: :0x4d
+   Value:  0x4d
 
-   Frame Type: :METADATA
+   Frame Type:  METADATA
 
-   Reference: :[[this document]]
+   Reference:  [[this document]]
 
    This document adds an entry to the "HTTP/3 Frame Types" registry
    defined in [RFC9114] with the following parameters:
 
-   Value: :0x4d44
+   Value:  0x4d44
 
-   Settings Name: :SETTINGS_ENABLE_METADATA
+   Settings Name:  SETTINGS_ENABLE_METADATA
 
-   Default: :0
+   Default:  0
 
-   Reference: :[[this document]]
+   Reference:  [[this document]]
 
 7.  References
 
