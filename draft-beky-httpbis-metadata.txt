@@ -5,7 +5,7 @@
 HTTP                                                             B. Béky
 Internet-Draft                                                    B. Roy
 Intended status: Standards Track                              Google LLC
-Expires: 30 December 2022                                   28 June 2022
+Expires: 31 December 2022                                   29 June 2022
 
 
                   METADATA frame for HTTP/2 and HTTP/3
@@ -14,7 +14,8 @@ Expires: 30 December 2022                                   28 June 2022
 Abstract
 
    This document describes a mechanism to send meta information over
-   HTTP/2 ([HTTP/2]) and HTTP/3 ([HTTP/3]) connections.  TODO elaborate
+   HTTP/2 ([RFC9113]) and HTTP/3 ([RFC9114]) connections.  TODO
+   elaborate
 
 Discussion Venues
 
@@ -42,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 December 2022.
+   This Internet-Draft will expire on 31 December 2022.
 
 Copyright Notice
 
@@ -68,7 +69,11 @@ Table of Contents
    4.  Negotiating METADATA
    5.  Security Considerations
    6.  IANA Considerations
-   7.  Normative References
+     6.1.  HTTP/2
+     6.2.  HTTP/3
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -96,7 +101,7 @@ Table of Contents
 3.  METADATA frame
 
    Both HTTP/2 and HTTP/3 specifications allow the protocol to be
-   extended, see Section 5.5 of [HTTP/2] and Section 9 of [HTTP/3].
+   extended, see Section 5.5 of [RFC9113] and Section 9 of [RFC9114].
 
    This document defines a new frame type: METADATA.
 
@@ -124,10 +129,11 @@ Table of Contents
 
                       Figure 1: METADATA HTTP/2 frame
 
-   The METADATA frame defines the following flag:  END_METADATA (0x04):
-      When set, the END_METADATA flag indicates that this frame contains
-      the entire encoded list of key-value pairs and is not followed by
-      any CONTINUATION frames.
+   The METADATA frame defines the following flag:
+
+   END_METADATA (0x04):  When set, the END_METADATA flag indicates that
+      this frame contains the entire encoded list of key-value pairs and
+      is not followed by any CONTINUATION frames.
 
       A METADATA frame without the END_METADATA flag set MUST be
       followed by a CONTINUATION frame for the same stream.  A receiver
@@ -192,9 +198,9 @@ Table of Contents
    An endpoint that supports METADATA frames SHOULD advertise that by
    sending SETTINGS_ENABLE_METADATA with value 1 on each connection.  A
    value of 0 indicates that the endpoint does not support METADATA
-   frames.  A value other than 0 or 1 MUST not be sent.  For HTTP/2,
-   SETTINGS_ENABLE_METADATA MUST not be sent in any SETTINGS frame other
-   than the first one.
+   frames.  A value other than 0 or 1 MUST not be sent.  The initial
+   value is 0.  For HTTP/2, SETTINGS_ENABLE_METADATA MUST not be sent in
+   any SETTINGS frame other than the first one.
 
    An endpoint MAY send METADATA frames before it learns that the peer
    supports them.  For example, a proxy might chose to forward METADATA
@@ -208,17 +214,37 @@ Table of Contents
 
 6.  IANA Considerations
 
-   TODO IANA: two frame types and two setting identifiers.
+6.1.  HTTP/2
 
-7.  Normative References
+   This document adds an entry to the "HTTP/2 Frame Type" registry
+   originally defined in [RFC7540] but updated to refer to [RFC9113]
+   with the following parameters:
 
-   [HTTP/2]   Thomson, M., Ed. and C. Benfield, Ed., "HTTP/2", RFC 9113,
-              DOI 10.17487/RFC9113, 1 January 1970,
-              <https://www.rfc-editor.org/rfc/rfc9113>.
+   Code: 0x4d Frame Type: METADATA Reference: [[this document]]
 
-   [HTTP/3]   Bishop, M., Ed., "Hypertext Transfer Protocol Version 3
-              (HTTP/3)", RFC 9114, DOI 10.17487/RFC9114, 1 January 1970,
-              <https://www.rfc-editor.org/rfc/rfc9114>.
+   This document adds an entry to the "HTTP/2 Settings" registry
+   originally defined in [RFC7540] but updated to refer to [RFC9113]
+   with the following parameters:
+
+   Code: 0x4d44 Name: SETTINGS_ENABLE_METADATA Initial Value: 0
+   Reference: [[this document]]
+
+6.2.  HTTP/3
+
+   This document adds an entry to the "HTTP/3 Frame Types" registry
+   defined in [RFC9114] with the following parameters:
+
+   Value: 0x4d Frame Type: METADATA Reference: [[this document]]
+
+   This document adds an entry to the "HTTP/3 Frame Types" registry
+   defined in [RFC9114] with the following parameters:
+
+   Value: 0x4d44 Settings Name: SETTINGS_ENABLE_METADATA Default: 0
+   Reference: [[this document]]
+
+7.  References
+
+7.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -228,6 +254,20 @@ Table of Contents
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [RFC9113]  Thomson, M., Ed. and C. Benfield, Ed., "HTTP/2", RFC 9113,
+              DOI 10.17487/RFC9113, June 2022,
+              <https://www.rfc-editor.org/rfc/rfc9113>.
+
+   [RFC9114]  Bishop, M., Ed., "HTTP/3", RFC 9114, DOI 10.17487/RFC9114,
+              June 2022, <https://www.rfc-editor.org/rfc/rfc9114>.
+
+7.2.  Informative References
+
+   [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
+              Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
+              DOI 10.17487/RFC7540, May 2015,
+              <https://www.rfc-editor.org/rfc/rfc7540>.
 
 Acknowledgments
 
