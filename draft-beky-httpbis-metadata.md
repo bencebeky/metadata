@@ -29,10 +29,6 @@ author:
 
 normative:
 
-Belshe, M., Peon, R., and M. Thomson, Ed., "", RFC 7540, DOI 10.17487/RFC7540, May 2015,
-<https://www.rfc-editor.org/info/rfc7540>.
-
-
   RFC7540:
     display: RFC7540
     title: "Hypertext Transfer Protocol Version 2 (HTTP/2)"
