@@ -56,7 +56,7 @@ application.
 # METADATA frame
 
 Both HTTP/2 and HTTP/3 specifications allow the protocol to be extended, see
-{{!Section 5.5 of RFC9113}} and {{!Section 9 of RFC9114}}.
+{{Section 5.5 of RFC9113}} and {{Section 9 of RFC9114}}.
 
 This document defines a new frame type: METADATA.
 
@@ -169,7 +169,7 @@ TODO Security
 ## HTTP/2
 
 This document adds an entry to the "HTTP/2 Frame Type" registry originally
-defined in {{?RFC7540}} but updated to refer to {{!RFC9113}} with the following
+defined in {{?RFC7540}} but updated to refer to {{RFC9113}} with the following
 parameters:
 
 Code: 0x4d
@@ -177,7 +177,7 @@ Frame Type: METADATA
 Reference: [[this document]]
 
 This document adds an entry to the "HTTP/2 Settings" registry originally defined
-in {{?RFC7540}} but updated to refer to {{!RFC9113}} with the following parameters:
+in {{?RFC7540}} but updated to refer to {{RFC9113}} with the following parameters:
 
 Code: 0x4d44
 Name: SETTINGS_ENABLE_METADATA
@@ -187,14 +187,14 @@ Reference: [[this document]]
 ## HTTP/3
 
 This document adds an entry to the "HTTP/3 Frame Types" registry defined in
-{{!RFC9114}} with the following parameters:
+{{RFC9114}} with the following parameters:
 
 Value: 0x4d
 Frame Type: METADATA
 Reference: [[this document]]
 
 This document adds an entry to the "HTTP/3 Frame Types" registry defined in
-{{!RFC9114}} with the following parameters:
+{{RFC9114}} with the following parameters:
 
 Value: 0x4d44
 Settings Name: SETTINGS_ENABLE_METADATA
