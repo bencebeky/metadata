@@ -29,6 +29,32 @@ author:
 
 normative:
 
+Belshe, M., Peon, R., and M. Thomson, Ed., "", RFC 7540, DOI 10.17487/RFC7540, May 2015,
+<https://www.rfc-editor.org/info/rfc7540>.
+
+
+  RFC7540:
+    display: RFC7540
+    title: "Hypertext Transfer Protocol Version 2 (HTTP/2)"
+    date: 1970-01-01
+    seriesinfo:
+      RFC: 7540
+      DOI: 10.17487/RFC7540
+    author:
+      -
+          ins: M. Belshe
+          name: Mike Belshe
+          org: BitGo
+      -
+          R. Peon
+          name: Roberto Peon
+          org: Google, Inc
+      -
+          M. Thomson
+          name: Martin Thomson
+          org: Mozilla
+          role: editor
+
   RFC9113:
     display: HTTP/2
     title: "HTTP/2"
@@ -187,8 +213,9 @@ SETTINGS_ENABLE_METADATA, with value 0x4d44.
 An endpoint that supports METADATA frames SHOULD advertise that by sending
 SETTINGS_ENABLE_METADATA with value 1 on each connection.  A value of 0
 indicates that the endpoint does not support METADATA frames.  A value other
-than 0 or 1 MUST not be sent.  For HTTP/2, SETTINGS_ENABLE_METADATA MUST not be
-sent in any SETTINGS frame other than the first one.
+than 0 or 1 MUST not be sent.  The initial value is 0.  For HTTP/2,
+SETTINGS_ENABLE_METADATA MUST not be sent in any SETTINGS frame other than the
+first one.
 
 An endpoint MAY send METADATA frames before it learns that the peer supports
 them.  For example, a proxy might chose to forward METADATA frames, or it might
@@ -202,7 +229,40 @@ TODO Security
 
 # IANA Considerations
 
-TODO IANA: two frame types and two setting identifiers.
+## HTTP/2
+
+This document adds an entry to the "HTTP/2 Frame Type" registry originally
+defined in {{RFC7540}} but updated to refer to {{HTTP/2}} with the following
+parameters:
+
+Code: 0x4d
+Frame Type: METADATA
+Reference: [[this document]]
+
+This document adds an entry to the "HTTP/2 Settings" registry originally defined
+in {{RFC7540}} but updated to refer to {{HTTP/2}} with the following parameters:
+
+Code: 0x4d44
+Name: SETTINGS_ENABLE_METADATA
+Initial Value: 0
+Reference: [[this document]]
+
+## HTTP/3
+
+This document adds an entry to the "HTTP/3 Frame Types" registry defined in
+{{HTTP/3}} with the following parameters:
+
+Value: 0x4d
+Frame Type: METADATA
+Reference: [[this document]]
+
+This document adds an entry to the "HTTP/3 Frame Types" registry defined in
+{{HTTP/3}} with the following parameters:
+
+Value: 0x4d44
+Settings Name: SETTINGS_ENABLE_METADATA
+Default: 0
+Reference: [[this document]]
 
 
 --- back
