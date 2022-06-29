@@ -1354,34 +1354,44 @@ chose to buffer them, before it receives a SETTINGS frame.  An endpoint <span cl
 <p id="section-6.1-1">This document adds an entry to the "HTTP/2 Frame Type" registry originally
 defined in <span>[<a href="#RFC7540" class="xref">RFC7540</a>]</span> but updated to refer to <span>[<a href="#RFC9113" class="xref">RFC9113</a>]</span> with the following
 parameters:<a href="#section-6.1-1" class="pilcrow">¶</a></p>
-<p id="section-6.1-2">Code:
-  :0x4d<a href="#section-6.1-2" class="pilcrow">¶</a></p>
-<p id="section-6.1-3">Frame Type:
-  :METADATA<a href="#section-6.1-3" class="pilcrow">¶</a></p>
-<p id="section-6.1-4">Reference: [[this document]]<a href="#section-6.1-4" class="pilcrow">¶</a></p>
-<p id="section-6.1-5">This document adds an entry to the "HTTP/2 Settings" registry originally defined
-in <span>[<a href="#RFC7540" class="xref">RFC7540</a>]</span> but updated to refer to <span>[<a href="#RFC9113" class="xref">RFC9113</a>]</span> with the following parameters:<a href="#section-6.1-5" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-6.1-6">
-          <dt id="section-6.1-6.1">
-<em>Code</em>:</dt>
-          <dd style="margin-left: 1.5em" id="section-6.1-6.2">
-            <p id="section-6.1-6.2.1">0x4d44<a href="#section-6.1-6.2.1" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-6.1-2">
+          <dt id="section-6.1-2.1"><strong>Code:</strong></dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-2.2">
+            <p id="section-6.1-2.2.1">0x4d<a href="#section-6.1-2.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-6.1-6.3">
-<strong>Name</strong>:</dt>
-          <dd style="margin-left: 1.5em" id="section-6.1-6.4">
-            <p id="section-6.1-6.4.1">SETTINGS_ENABLE_METADATA<a href="#section-6.1-6.4.1" class="pilcrow">¶</a></p>
+<dt id="section-6.1-2.3"><strong>Frame Type:</strong></dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-2.4">
+            <p id="section-6.1-2.4.1">METADATA<a href="#section-6.1-2.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-6.1-6.5">Initial Value:</dt>
-          <dd style="margin-left: 1.5em" id="section-6.1-6.6">
-            <p id="section-6.1-6.6.1">0<a href="#section-6.1-6.6.1" class="pilcrow">¶</a></p>
+<dt id="section-6.1-2.5"><strong>Reference:</strong></dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-2.6">
+            <p id="section-6.1-2.6.1">[[this document]]<a href="#section-6.1-2.6.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
+<p id="section-6.1-3">This document adds an entry to the "HTTP/2 Settings" registry originally defined
+in <span>[<a href="#RFC7540" class="xref">RFC7540</a>]</span> but updated to refer to <span>[<a href="#RFC9113" class="xref">RFC9113</a>]</span> with the following parameters:<a href="#section-6.1-3" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-6.1-4">
+          <dt id="section-6.1-4.1"><strong>Code:</strong></dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.2">
+            <p id="section-6.1-4.2.1">0x4d44<a href="#section-6.1-4.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-6.1-6.7">Reference:</dt>
-          <dd style="margin-left: 1.5em" id="section-6.1-6.8">
-            <p id="section-6.1-6.8.1">[[this document]]<a href="#section-6.1-6.8.1" class="pilcrow">¶</a></p>
+<dt id="section-6.1-4.3"><strong>Name:</strong></dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.4">
+            <p id="section-6.1-4.4.1">SETTINGS_ENABLE_METADATA<a href="#section-6.1-4.4.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.5"><strong>Initial Value:</strong></dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.6">
+            <p id="section-6.1-4.6.1">0<a href="#section-6.1-4.6.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.7"><strong>Reference:</strong></dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.8">
+            <p id="section-6.1-4.8.1">[[this document]]<a href="#section-6.1-4.8.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1395,17 +1405,17 @@ in <span>[<a href="#RFC7540" class="xref">RFC7540</a>]</span> but updated to ref
 <p id="section-6.2-1">This document adds an entry to the "HTTP/3 Frame Types" registry defined in
 <span>[<a href="#RFC9114" class="xref">RFC9114</a>]</span> with the following parameters:<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-6.2-2">
-          <dt id="section-6.2-2.1">Value:</dt>
+          <dt id="section-6.2-2.1"><strong>Value:</strong></dt>
           <dd style="margin-left: 1.5em" id="section-6.2-2.2">
             <p id="section-6.2-2.2.1">0x4d<a href="#section-6.2-2.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-6.2-2.3">Frame Type:</dt>
+<dt id="section-6.2-2.3"><strong>Frame Type:</strong></dt>
           <dd style="margin-left: 1.5em" id="section-6.2-2.4">
             <p id="section-6.2-2.4.1">METADATA<a href="#section-6.2-2.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-6.2-2.5">Reference:</dt>
+<dt id="section-6.2-2.5"><strong>Reference:</strong></dt>
           <dd style="margin-left: 1.5em" id="section-6.2-2.6">
             <p id="section-6.2-2.6.1">[[this document]]<a href="#section-6.2-2.6.1" class="pilcrow">¶</a></p>
 </dd>
@@ -1414,22 +1424,22 @@ in <span>[<a href="#RFC7540" class="xref">RFC7540</a>]</span> but updated to ref
 <p id="section-6.2-3">This document adds an entry to the "HTTP/3 Frame Types" registry defined in
 <span>[<a href="#RFC9114" class="xref">RFC9114</a>]</span> with the following parameters:<a href="#section-6.2-3" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-6.2-4">
-          <dt id="section-6.2-4.1">Value:</dt>
+          <dt id="section-6.2-4.1"><strong>Value:</strong></dt>
           <dd style="margin-left: 1.5em" id="section-6.2-4.2">
             <p id="section-6.2-4.2.1">0x4d44<a href="#section-6.2-4.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-6.2-4.3">Settings Name:</dt>
+<dt id="section-6.2-4.3"><strong>Settings Name:</strong></dt>
           <dd style="margin-left: 1.5em" id="section-6.2-4.4">
             <p id="section-6.2-4.4.1">SETTINGS_ENABLE_METADATA<a href="#section-6.2-4.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-6.2-4.5">Default:</dt>
+<dt id="section-6.2-4.5"><strong>Default:</strong></dt>
           <dd style="margin-left: 1.5em" id="section-6.2-4.6">
             <p id="section-6.2-4.6.1">0<a href="#section-6.2-4.6.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-6.2-4.7">Reference:</dt>
+<dt id="section-6.2-4.7"><strong>Reference:</strong></dt>
           <dd style="margin-left: 1.5em" id="section-6.2-4.8">
             <p id="section-6.2-4.8.1">[[this document]]<a href="#section-6.2-4.8.1" class="pilcrow">¶</a></p>
 </dd>
