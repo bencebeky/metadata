@@ -86,35 +86,32 @@ METADATA HTTP/2 Frame {
 
 The METADATA frame defines the following flag:
 
-END_METADATA (0x04):
-  : When set, the END_METADATA flag indicates that this frame contains the
-  entire encoded list of key-value pairs and is not followed by any CONTINUATION
-  frames.
-
-  : A METADATA frame without the END_METADATA flag set MUST be followed by a
-  CONTINUATION frame for the same stream. A receiver MUST treat the receipt of
-  any other type of frame or a frame on a different stream as a connection error
-  (Section 5.4.1) of type PROTOCOL_ERROR.  In this case, the CONTINUATION frame
-  or frames will carry the remaining of the encoded key-value pairs instead of
-  an encoded header block.  The CONTINUATION frame with the last fragment of the
-  encoded key-value pairs has the END_HEADERS frag set to indicate the
-  completion of the encoded key-value pairs.  TODO: find a succinct name for
+**END_METADATA (0x04)**:
+  : When set, the END_METADATA flag indicates that this frame ends the logical
+  sequence of encoded key-value pairs.  **TODO**: find a succinct name for
   encoded key-value pairs that clearly reflects that these are not headers.
+
+  : A METADATA frame without the END_METADATA flag set _MUST_ be followed by a
+  another METADATA frame on the same stream.  However, METADATA frames _MAY_ be
+  interleaved with non-METADATA frames or METADATA frames on different streams.
 
 METADATA frames are allowed on any stream.  METADATA frames on stream 0 carry
 information pertaining to the whole connection.  METADATA frames on any other
 stream are associated with the exchange carried by that stream.
 
-METADATA frames MUST NOT be sent on a stream in closed or half closed (local)
-state.  METADATA frames do not alter the state of a stream.
+METADATA frames do not alter the state of a stream.  METADATA frames _MUST NOT_
+be sent on a stream in the "closed" or "half closed (local)" state.  An endpoint
+that receives METADATA for a stream in the “idle” state _MAY_ choose to retain
+the payload for a period of time, under the assumption that the stream will soon
+transition to the “open” state.
 
 METADATA frames obey the maximum frame size set by SETTINGS_MAX_FRAME_SIZE.
 
 METADATA frames are not subject to flow control.
 
 The payload of METADATA frames is a list of key-value pairs encoded using HPACK
-instructions.  An endpoint MUST not use any HPACK instructions that change the
-dynamic table.
+instructions ({{!RFC7541}}).  An endpoint MUST not use any HPACK instructions
+that change the dynamic table.
 
 ## METADATA HTTP/3 frame
 
