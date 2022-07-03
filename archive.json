@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-06-30T00:50:47.560658+00:00",
+  "timestamp": "2022-07-03T00:55:03.613728+00:00",
   "repo": "bencebeky/metadata",
   "labels": [
     {
@@ -50,5 +50,48 @@
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOHkxoaM46vAPw",
+      "title": "Add some updates for the METADATA HTTP/2 section.",
+      "url": "https://github.com/bencebeky/metadata/pull/1",
+      "state": "MERGED",
+      "author": "diannahu",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Updates include:\r\n  - Meaning of the END_METADATA flag and multiple METADATA frames.\r\n  - Ability to interleave METADATA frames with other frames.\r\n  - Some detail on stream state (transitioning from \"idle\").\r\n  - Minor editorial tweaks.\r\n\r\nUpdates are based on:\r\nhttps://docs.google.com/document/d/1DsPjl6qWxhcF28vzJey0xQJ2O2eRKHv7CBXt3EZyDjc/edit.",
+      "createdAt": "2022-07-01T23:06:08Z",
+      "updatedAt": "2022-07-02T19:21:45Z",
+      "baseRepository": "bencebeky/metadata",
+      "baseRefName": "main",
+      "baseRefOid": "04f4448624c0ffde008e5832cf0b00a720b05b01",
+      "headRepository": "diannahu/metadata",
+      "headRefName": "http2section",
+      "headRefOid": "cc388311999eb5c6ff85beabf0862757cbab0b52",
+      "closedAt": "2022-07-02T19:21:45Z",
+      "mergedAt": "2022-07-02T19:21:44Z",
+      "mergedBy": "bencebeky",
+      "mergeCommit": {
+        "oid": "964c74e664d59f8291d1867c3b2cfa8206e12913"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHkxoaM49M3ZO",
+          "commit": {
+            "abbreviatedOid": "cc38831"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "Thank you for the improvements!",
+          "createdAt": "2022-07-02T19:21:11Z",
+          "updatedAt": "2022-07-02T19:21:11Z",
+          "comments": []
+        }
+      ]
+    }
+  ]
 }
