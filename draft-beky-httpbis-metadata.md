@@ -65,9 +65,11 @@ Both HTTP/2 and HTTP/3 specifications allow the protocol to be extended, see
 
 This document defines a new frame type: METADATA.
 
-The payload of a METADATA frame is a metadata block, which is an encoded list
-of key-value pairs.  Each key and value is a sequence of bytes with no
-restriction on the allowed values.
+The payload of a sequence of METADATA frames is a metadata block, which is an
+encoded list of key-value pairs.  Each key and value is a sequence of bytes with
+no restriction on the allowed values.
+
+A connection or stream _MAY_ carry any number of metadata blocks.
 
 METADATA frames do not change HTTP semantics.
 
@@ -110,6 +112,15 @@ be sent on a stream in the "closed" or "half closed (local)" state.  An endpoint
 that receives METADATA for a stream in the “idle” state _MAY_ choose to retain
 the payload for a period of time, under the assumption that the stream will soon
 transition to the “open” state.
+
+A metadata block is the concatenation of the payloads of a sequence of one or
+more METADATA frames, among which only the last one carries the END_METADATA
+flag.   If the transfer of the last metadata block cannot be completed due to
+the stream or connection being closed before a METADATA frame with the
+END_METADATA flag, then the metadata block fragment carried by the last run of
+METADATA frames without the END_METADATA flag _SHOULD_ be discarded.  This
+_SHOULD_ not affect processing of previously transferred complete metadata
+blocks on the same stream or connection.
 
 METADATA frames obey the maximum frame size set by SETTINGS_MAX_FRAME_SIZE.
 
