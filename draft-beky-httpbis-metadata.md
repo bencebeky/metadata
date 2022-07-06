@@ -65,8 +65,9 @@ Both HTTP/2 and HTTP/3 specifications allow the protocol to be extended, see
 
 This document defines a new frame type: METADATA.
 
-The payload of a METADATA frame is an encoded list of key-value pairs.  Each key
-and value is a sequence of bytes with no restriction on the allowed values.
+The payload of a METADATA frame is a metadata block, which is an encoded list
+of key-value pairs.  Each key and value is a sequence of bytes with no
+restriction on the allowed values.
 
 METADATA frames do not change HTTP semantics.
 
@@ -93,8 +94,7 @@ The METADATA frame defines the following flag:
 
 **END_METADATA (0x04)**:
   : When set, the END_METADATA flag indicates that this frame ends the logical
-  sequence of encoded key-value pairs.  **TODO**: find a succinct name for
-  encoded key-value pairs that clearly reflects that these are not headers.
+  metadata block.
 
   : A METADATA frame without the END_METADATA flag set _MUST_ be followed by a
   another METADATA frame on the same stream.  However, METADATA frames _MAY_ be
@@ -114,7 +114,7 @@ METADATA frames obey the maximum frame size set by SETTINGS_MAX_FRAME_SIZE.
 
 METADATA frames are not subject to flow control.
 
-The payload of METADATA frames is a list of key-value pairs encoded using HPACK
+The metadata block of an HTTP/2 METADATA frame is encoded using HPACK
 instructions ({{!RFC7541}}).  An endpoint MUST not use any HPACK instructions
 that change the dynamic table.
 
@@ -137,7 +137,7 @@ frames on the control stream carry information pertaining to the whole
 connection.  METADATA frames on a request stream or a push stream are associated
 with the exchange carried by that stream.
 
-The payload of METADATA frames is a list of key-value pairs encoded using QPACK
+The metadata block of a HTTP/3 METADATA frame is encoded using QPACK
 representations.  An endpoint MUST not use any QPACK representations that
 reference the dynamic table.  Therefore the Required Insert Count is be zero,
 and decoding METADATA frame payloads do not elicit instructions on the QPACK decoder
