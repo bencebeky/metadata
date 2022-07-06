@@ -40,9 +40,14 @@ This document describes a mechanism to send meta information over HTTP/2
 
 HTTP/2 and HTTP/3 connections are capable of transporting multiple HTTP
 messages, which are composed of field sections and bodies.  This document
-described a mechanism to convey additional information about HTTP messages or
+describes a mechanism to convey additional information about HTTP messages or
 the entire connection, in a way that does not change HTTP semantics, over the
-same connection.  TODO add motivating example
+same connection.  For instance, an endpoint may wish to convey the CPU cost or
+other loadbalancing information for a particular HTTP message, or perhaps
+certain statistics for a particular HTTP message or for the connection as a
+whole.  Applications may wish to provide such information without affecting HTTP
+messages themselves. These are some non-exhaustive examples of use cases that
+may be well served by the METADATA frame.
 
 A proxy MAY consume METADATA frames, pass them along unmodified, modify the
 payloads, or emit new METADATA frames, depending on the specific needs of the
