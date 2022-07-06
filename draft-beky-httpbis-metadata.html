@@ -1223,8 +1223,9 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <p id="section-3-1">Both HTTP/2 and HTTP/3 specifications allow the protocol to be extended, see
 <span><a href="https://rfc-editor.org/rfc/rfc9113#section-5.5" class="relref">Section 5.5</a> of [<a href="#RFC9113" class="xref">RFC9113</a>]</span> and <span><a href="https://rfc-editor.org/rfc/rfc9114#section-9" class="relref">Section 9</a> of [<a href="#RFC9114" class="xref">RFC9114</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">This document defines a new frame type: METADATA.<a href="#section-3-2" class="pilcrow">¶</a></p>
-<p id="section-3-3">The payload of a METADATA frame is an encoded list of key-value pairs.  Each key
-and value is a sequence of bytes with no restriction on the allowed values.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-3">The payload of a METADATA frame is a metadata block, which is an encoded list
+of key-value pairs.  Each key and value is a sequence of bytes with no
+restriction on the allowed values.<a href="#section-3-3" class="pilcrow">¶</a></p>
 <p id="section-3-4">METADATA frames do not change HTTP semantics.<a href="#section-3-4" class="pilcrow">¶</a></p>
 <div id="metadata-http2-frame">
 <section id="section-3.1">
@@ -1257,8 +1258,7 @@ METADATA HTTP/2 Frame {
 <strong>END_METADATA (0x04)</strong>:</dt>
           <dd style="margin-left: 1.5em" id="section-3.1-4.2">
             <p id="section-3.1-4.2.1">When set, the END_METADATA flag indicates that this frame ends the logical
-  sequence of encoded key-value pairs.  <strong>TODO</strong>: find a succinct name for
-  encoded key-value pairs that clearly reflects that these are not headers.<a href="#section-3.1-4.2.1" class="pilcrow">¶</a></p>
+  metadata block.<a href="#section-3.1-4.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-3.1-4.3"></dt>
@@ -1279,7 +1279,7 @@ the payload for a period of time, under the assumption that the stream will soon
 transition to the "open" state.<a href="#section-3.1-6" class="pilcrow">¶</a></p>
 <p id="section-3.1-7">METADATA frames obey the maximum frame size set by SETTINGS_MAX_FRAME_SIZE.<a href="#section-3.1-7" class="pilcrow">¶</a></p>
 <p id="section-3.1-8">METADATA frames are not subject to flow control.<a href="#section-3.1-8" class="pilcrow">¶</a></p>
-<p id="section-3.1-9">The payload of METADATA frames is a list of key-value pairs encoded using HPACK
+<p id="section-3.1-9">The metadata block of an HTTP/2 METADATA frame is encoded using HPACK
 instructions (<span>[<a href="#RFC7541" class="xref">RFC7541</a>]</span>).  An endpoint <span class="bcp14">MUST</span> not use any HPACK instructions
 that change the dynamic table.<a href="#section-3.1-9" class="pilcrow">¶</a></p>
 </section>
@@ -1308,7 +1308,7 @@ METADATA HTTP/3 Frame {
 frames on the control stream carry information pertaining to the whole
 connection.  METADATA frames on a request stream or a push stream are associated
 with the exchange carried by that stream.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
-<p id="section-3.2-4">The payload of METADATA frames is a list of key-value pairs encoded using QPACK
+<p id="section-3.2-4">The metadata block of a HTTP/3 METADATA frame is encoded using QPACK
 representations.  An endpoint <span class="bcp14">MUST</span> not use any QPACK representations that
 reference the dynamic table.  Therefore the Required Insert Count is be zero,
 and decoding METADATA frame payloads do not elicit instructions on the QPACK decoder
