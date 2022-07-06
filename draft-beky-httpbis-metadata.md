@@ -94,8 +94,7 @@ The METADATA frame defines the following flag:
 
 **END_METADATA (0x04)**:
   : When set, the END_METADATA flag indicates that this frame ends the logical
-  sequence of encoded key-value pairs.  **TODO**: find a succinct name for
-  encoded key-value pairs that clearly reflects that these are not headers.
+  metadata block.
 
   : A METADATA frame without the END_METADATA flag set _MUST_ be followed by a
   another METADATA frame on the same stream.  However, METADATA frames _MAY_ be
