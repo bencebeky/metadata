@@ -98,7 +98,8 @@ The METADATA frame defines the following flag:
 
   : A METADATA frame without the END_METADATA flag set _MUST_ be followed by a
   another METADATA frame on the same stream.  However, METADATA frames _MAY_ be
-  interleaved with non-METADATA frames or METADATA frames on different streams.
+  interleaved with non-METADATA frames on the same stream, or frames of any type
+  on different streams.
 
 METADATA frames are allowed on any stream.  METADATA frames on stream 0 carry
 information pertaining to the whole connection.  METADATA frames on any other
