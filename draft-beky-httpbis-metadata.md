@@ -52,7 +52,7 @@ whole.  Applications may wish to provide such information without affecting HTTP
 messages themselves. These are some non-exhaustive examples of use cases that
 may be well served by the METADATA frame.
 
-A proxy MAY consume METADATA frames, pass them along unmodified, modify the
+A proxy _MAY_ consume METADATA frames, pass them along unmodified, modify the
 payloads, or emit new METADATA frames, depending on the specific needs of the
 application.
 
@@ -68,9 +68,11 @@ Both HTTP/2 and HTTP/3 specifications allow the protocol to be extended, see
 
 This document defines a new frame type: METADATA.
 
-The payload of a METADATA frame is a metadata block, which is an encoded list
-of key-value pairs.  Each key and value is a sequence of bytes with no
-restriction on the allowed values.
+The payload of a sequence of METADATA frames is a metadata block, which is an
+encoded list of key-value pairs.  Each key and value is a sequence of bytes with
+no restriction on the allowed values.
+
+An endpoint _MAY_ transmit multiple metadata blocks on the same stream.
 
 METADATA frames do not change HTTP semantics.
 
@@ -101,7 +103,8 @@ The METADATA frame defines the following flag:
 
   : A METADATA frame without the END_METADATA flag set _MUST_ be followed by a
   another METADATA frame on the same stream.  However, METADATA frames _MAY_ be
-  interleaved with non-METADATA frames or METADATA frames on different streams.
+  interleaved with non-METADATA frames on the same stream, or frames of any type
+  on different streams.
 
 METADATA frames are allowed on any stream.  METADATA frames on stream 0 carry
 information pertaining to the whole connection.  METADATA frames on any other
@@ -113,12 +116,19 @@ that receives METADATA for a stream in the “idle” state _MAY_ choose to reta
 the payload for a period of time, under the assumption that the stream will soon
 transition to the “open” state.
 
+A metadata block is the concatenation of the payloads of a sequence of one or
+more METADATA frames, only the last of which has the END_METADATA flag set.   If
+the transfer of the last metadata block cannot be completed due to the stream or
+connection being closed before a METADATA frame with the END_METADATA flag, then
+the incomplete metadata block _SHOULD_ be discarded.  This _SHOULD NOT_ affect
+processing of previous metadata blocks on the same stream or connection.
+
 METADATA frames obey the maximum frame size set by SETTINGS_MAX_FRAME_SIZE.
 
 METADATA frames are not subject to flow control.
 
 The metadata block of an HTTP/2 METADATA frame is encoded using HPACK
-instructions ({{!RFC7541}}).  An endpoint MUST not use any HPACK instructions
+instructions ({{!RFC7541}}).  An endpoint _MUST NOT_ use any HPACK instructions
 that change the dynamic table.
 
 ## METADATA HTTP/3 frame
@@ -141,10 +151,10 @@ connection.  METADATA frames on a request stream or a push stream are associated
 with the exchange carried by that stream.
 
 The metadata block of a HTTP/3 METADATA frame is encoded using QPACK
-representations.  An endpoint MUST not use any QPACK representations that
+representations.  An endpoint _MUST NOT_ use any QPACK representations that
 reference the dynamic table.  Therefore the Required Insert Count is be zero,
-and decoding METADATA frame payloads do not elicit instructions on the QPACK decoder
-stream.
+and decoding METADATA frame payloads do not elicit instructions on the QPACK
+decoder stream.
 
 # Negotiating METADATA
 
@@ -152,17 +162,17 @@ This document defines a new HTTP/2 setting identifier, SETTINGS_ENABLE_METADATA,
 with value 0x4d44.  It also defines a new HTTP/3 setting identifier,
 SETTINGS_ENABLE_METADATA, with value 0x4d44.
 
-An endpoint that supports METADATA frames SHOULD advertise that by sending
+An endpoint that supports METADATA frames _SHOULD_ advertise that by sending
 SETTINGS_ENABLE_METADATA with value 1 on each connection.  A value of 0
 indicates that the endpoint does not support METADATA frames.  A value other
-than 0 or 1 MUST not be sent.  The initial value is 0.  For HTTP/2,
-SETTINGS_ENABLE_METADATA MUST not be sent in any SETTINGS frame other than the
+than 0 or 1 _MUST NOT_ be sent.  The initial value is 0.  For HTTP/2,
+SETTINGS_ENABLE_METADATA _MUST NOT_ be sent in any SETTINGS frame other than the
 first one.
 
-An endpoint MAY send METADATA frames before it learns that the peer supports
+An endpoint _MAY_ send METADATA frames before it learns that the peer supports
 them.  For example, a proxy might chose to forward METADATA frames, or it might
-chose to buffer them, before it receives a SETTINGS frame.  An endpoint SHOULD
-NOT send METADATA frames after it learns that the peer does not support them.
+chose to buffer them, before it receives a SETTINGS frame.  An endpoint _SHOULD
+NOT_ send METADATA frames after it learns that the peer does not support them.
 
 # Security Considerations
 
