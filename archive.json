@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-07-05T00:53:54.829137+00:00",
+  "timestamp": "2022-07-07T00:57:12.893617+00:00",
   "repo": "bencebeky/metadata",
   "labels": [
     {
@@ -58,12 +58,12 @@
       "url": "https://github.com/bencebeky/metadata/pull/1",
       "state": "MERGED",
       "author": "diannahu",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Updates include:\r\n  - Meaning of the END_METADATA flag and multiple METADATA frames.\r\n  - Ability to interleave METADATA frames with other frames.\r\n  - Some detail on stream state (transitioning from \"idle\").\r\n  - Minor editorial tweaks.\r\n\r\nUpdates are based on:\r\nhttps://docs.google.com/document/d/1DsPjl6qWxhcF28vzJey0xQJ2O2eRKHv7CBXt3EZyDjc/edit.",
       "createdAt": "2022-07-01T23:06:08Z",
-      "updatedAt": "2022-07-02T19:21:45Z",
+      "updatedAt": "2022-07-06T02:58:11Z",
       "baseRepository": "bencebeky/metadata",
       "baseRefName": "main",
       "baseRefOid": "04f4448624c0ffde008e5832cf0b00a720b05b01",
@@ -76,7 +76,15 @@
       "mergeCommit": {
         "oid": "964c74e664d59f8291d1867c3b2cfa8206e12913"
       },
-      "comments": [],
+      "comments": [
+        {
+          "author": "birenroy",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks, this is much better!",
+          "createdAt": "2022-07-06T02:58:11Z",
+          "updatedAt": "2022-07-06T02:58:11Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOHkxoaM49M3ZO",
@@ -90,6 +98,272 @@
           "createdAt": "2022-07-02T19:21:11Z",
           "updatedAt": "2022-07-02T19:21:11Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOHkxoaM46406n",
+      "title": "Add motivating examples for METADATA in the intro.",
+      "url": "https://github.com/bencebeky/metadata/pull/2",
+      "state": "MERGED",
+      "author": "diannahu",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-07-06T00:05:29Z",
+      "updatedAt": "2022-07-06T02:33:32Z",
+      "baseRepository": "bencebeky/metadata",
+      "baseRefName": "main",
+      "baseRefOid": "964c74e664d59f8291d1867c3b2cfa8206e12913",
+      "headRepository": "diannahu/metadata",
+      "headRefName": "examples",
+      "headRefOid": "a260a779b67b8169d57d7407d52c9edd6c9bb1d8",
+      "closedAt": "2022-07-06T02:33:32Z",
+      "mergedAt": "2022-07-06T02:33:32Z",
+      "mergedBy": "birenroy",
+      "mergeCommit": {
+        "oid": "843c4264d29abdf3e81e5fe823f41f107b115b31"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHkxoaM49W7Rh",
+          "commit": {
+            "abbreviatedOid": "a260a77"
+          },
+          "author": "birenroy",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Looks good, thank you Dianna!",
+          "createdAt": "2022-07-06T02:33:11Z",
+          "updatedAt": "2022-07-06T02:33:11Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOHkxoaM465RWj",
+      "title": "Adds a term for encoded metadata key-value pairs.",
+      "url": "https://github.com/bencebeky/metadata/pull/3",
+      "state": "MERGED",
+      "author": "birenroy",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I also removed the TODO associated with this editorial item.",
+      "createdAt": "2022-07-06T02:51:25Z",
+      "updatedAt": "2022-07-06T13:12:03Z",
+      "baseRepository": "bencebeky/metadata",
+      "baseRefName": "main",
+      "baseRefOid": "843c4264d29abdf3e81e5fe823f41f107b115b31",
+      "headRepository": "birenroy/metadata",
+      "headRefName": "metadata-block",
+      "headRefOid": "32980f081d1e27c13c740bf6bac8c0184f19ded8",
+      "closedAt": "2022-07-06T13:11:57Z",
+      "mergedAt": "2022-07-06T13:11:57Z",
+      "mergedBy": "bencebeky",
+      "mergeCommit": {
+        "oid": "525d3425033c77ed9c5ef4e57d06ddf468d37657"
+      },
+      "comments": [
+        {
+          "author": "birenroy",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bencebeky @diannahu FYI",
+          "createdAt": "2022-07-06T02:52:21Z",
+          "updatedAt": "2022-07-06T02:52:21Z"
+        },
+        {
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "body": "Thank you, this is great!",
+          "createdAt": "2022-07-06T13:12:03Z",
+          "updatedAt": "2022-07-06T13:12:03Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOHkxoaM4684s6",
+      "title": "Improvements",
+      "url": "https://github.com/bencebeky/metadata/pull/4",
+      "state": "OPEN",
+      "author": "bencebeky",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Add emphasis to MAY/MUST/SHOULD.\r\nClarify interleaving frame type and stream requirements.\r\nClarify multiple and incomplete metadata blocks.\r\n\r\nThree separate commits for easier review.",
+      "createdAt": "2022-07-06T16:33:21Z",
+      "updatedAt": "2022-07-06T22:50:13Z",
+      "baseRepository": "bencebeky/metadata",
+      "baseRefName": "main",
+      "baseRefOid": "525d3425033c77ed9c5ef4e57d06ddf468d37657",
+      "headRepository": "bencebeky/metadata",
+      "headRefName": "frames",
+      "headRefOid": "80f1e3f39fea8d3e3b48156fa0e0d6f8f3fcd3c6",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHkxoaM49bf_1",
+          "commit": {
+            "abbreviatedOid": "80f1e3f"
+          },
+          "author": "birenroy",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-06T19:49:19Z",
+          "updatedAt": "2022-07-06T19:50:57Z",
+          "comments": [
+            {
+              "originalPosition": 20,
+              "body": "This might be very nitpicky, but I would use some verb other than \"carry\". Maybe transmit, send, or transfer?",
+              "createdAt": "2022-07-06T19:49:19Z",
+              "updatedAt": "2022-07-06T19:50:57Z"
+            },
+            {
+              "originalPosition": 53,
+              "body": "Accidental extraneous \")\"?",
+              "createdAt": "2022-07-06T19:50:19Z",
+              "updatedAt": "2022-07-06T19:50:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49cIYX",
+          "commit": {
+            "abbreviatedOid": "80f1e3f"
+          },
+          "author": "diannahu",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Excellent improvements! My comments are only nits/optional.",
+          "createdAt": "2022-07-06T22:36:51Z",
+          "updatedAt": "2022-07-06T22:50:13Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "optional:\r\n\r\n\"..., among which only the last one carries the END_METADATA flag.\"\r\n\r\n-->\r\n\r\n\"..., the last of which has the END_METADATA flag set.\"",
+              "createdAt": "2022-07-06T22:36:51Z",
+              "updatedAt": "2022-07-06T22:50:13Z"
+            },
+            {
+              "originalPosition": 43,
+              "body": "optional:\r\n\r\n\"..., then the metadata block fragment carried by the last run of METADATA frames without the END_METADATA flag\"\r\n\r\n-->\r\n\r\n\"..., then that incomplete metadata block\"\r\n\r\n(I think this shortening is okay because the first sentence defines a metadata block very clearly. Nice!)",
+              "createdAt": "2022-07-06T22:42:13Z",
+              "updatedAt": "2022-07-06T22:50:13Z"
+            },
+            {
+              "originalPosition": 44,
+              "body": "uber-nit: \"_SHOULD_ not\" --> \"_SHOULD NOT_\"\r\n\r\noptional: \"previously transferred\" --> \"previous\"",
+              "createdAt": "2022-07-06T22:43:49Z",
+              "updatedAt": "2022-07-06T22:50:13Z"
+            },
+            {
+              "originalPosition": 53,
+              "body": "uber-nit: \"_MUST_ not\" --> \"_MUST NOT_\"",
+              "createdAt": "2022-07-06T22:45:57Z",
+              "updatedAt": "2022-07-06T22:50:13Z"
+            },
+            {
+              "originalPosition": 62,
+              "body": "uber-nit: \"_MUST_ not\" --> \"_MUST NOT_\"",
+              "createdAt": "2022-07-06T22:46:13Z",
+              "updatedAt": "2022-07-06T22:50:13Z"
+            },
+            {
+              "originalPosition": 76,
+              "body": "uber-nit: \"_MUST_ not\" --> \"_MUST NOT_\"",
+              "createdAt": "2022-07-06T22:46:24Z",
+              "updatedAt": "2022-07-06T22:50:13Z"
+            },
+            {
+              "originalPosition": 77,
+              "body": "uber-nit: \"_MUST_ not\" --> \"_MUST NOT_\"",
+              "createdAt": "2022-07-06T22:46:36Z",
+              "updatedAt": "2022-07-06T22:50:13Z"
+            },
+            {
+              "originalPosition": 84,
+              "body": "uber-nit: \"_SHOULD_ NOT\" --> \"_SHOULD NOT_\"",
+              "createdAt": "2022-07-06T22:47:00Z",
+              "updatedAt": "2022-07-06T22:50:13Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOHkxoaM469Oom",
+      "title": "Expand Abstract and add Acknowledgements.",
+      "url": "https://github.com/bencebeky/metadata/pull/5",
+      "state": "OPEN",
+      "author": "bencebeky",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-07-06T18:15:45Z",
+      "updatedAt": "2022-07-06T22:56:53Z",
+      "baseRepository": "bencebeky/metadata",
+      "baseRefName": "main",
+      "baseRefOid": "525d3425033c77ed9c5ef4e57d06ddf468d37657",
+      "headRepository": "bencebeky/metadata",
+      "headRefName": "abstract",
+      "headRefOid": "f0696b662a5bba84d664a3e510a1fb9dba27c5ce",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHkxoaM49bglr",
+          "commit": {
+            "abbreviatedOid": "f0696b6"
+          },
+          "author": "birenroy",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-07-06T19:51:37Z",
+          "updatedAt": "2022-07-06T19:51:37Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49cKpc",
+          "commit": {
+            "abbreviatedOid": "f0696b6"
+          },
+          "author": "diannahu",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": ":)",
+          "createdAt": "2022-07-06T22:51:19Z",
+          "updatedAt": "2022-07-06T22:56:53Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": ":)",
+              "createdAt": "2022-07-06T22:51:20Z",
+              "updatedAt": "2022-07-06T22:56:53Z"
+            },
+            {
+              "originalPosition": 6,
+              "body": "uber-nit: \"entire connection or to a specific\" (\"to\" for grammatical parallelism).\r\n\r\nmaybe better: \"refers to either the entire connection or a specific stream\" (also has parallelism).",
+              "createdAt": "2022-07-06T22:52:01Z",
+              "updatedAt": "2022-07-06T22:56:53Z"
+            }
+          ]
         }
       ]
     }
