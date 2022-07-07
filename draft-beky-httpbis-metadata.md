@@ -31,7 +31,10 @@ author:
 --- abstract
 
 This document describes a mechanism to send meta information over HTTP/2
-({{!RFC9113}}) and HTTP/3 ({{!RFC9114}}) connections.  TODO elaborate
+({{!RFC9113}}) and HTTP/3 ({{!RFC9114}}) connections that refers to either the
+entire connection or a specific stream without changing the semantics of the
+HTTP messages.  This mechanism can be used, for example, to gather information
+for accounting or logging purposes.
 
 
 --- middle
@@ -233,4 +236,5 @@ This document adds an entry to the "HTTP/3 Frame Types" registry defined in
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+The authors would like to acknowledge Dianna Hu and Ian Swett for their
+contributions to this document.
