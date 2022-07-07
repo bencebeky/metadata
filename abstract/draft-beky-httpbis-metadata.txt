@@ -5,7 +5,7 @@
 HTTP                                                             B. Béky
 Internet-Draft                                                    B. Roy
 Intended status: Standards Track                              Google LLC
-Expires: 7 January 2023                                      6 July 2022
+Expires: 8 January 2023                                      7 July 2022
 
 
                   METADATA frame for HTTP/2 and HTTP/3
@@ -14,8 +14,8 @@ Expires: 7 January 2023                                      6 July 2022
 Abstract
 
    This document describes a mechanism to send meta information over
-   HTTP/2 ([RFC9113]) and HTTP/3 ([RFC9114]) connections that refers
-   either to the entire connection or a specific stream without changing
+   HTTP/2 ([RFC9113]) and HTTP/3 ([RFC9114]) connections that refers to
+   either the entire connection or a specific stream without changing
    the semantics of the HTTP messages.  This mechanism can be used, for
    example, to gather information for accounting or logging purposes.
 
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 January 2023.
+   This Internet-Draft will expire on 8 January 2023.
 
 Copyright Notice
 
