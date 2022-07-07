@@ -31,7 +31,7 @@ author:
 --- abstract
 
 This document describes a mechanism to send meta information over HTTP/2
-({{!RFC9113}}) and HTTP/3 ({{!RFC9114}}) connections that refers either to the
+({{!RFC9113}}) and HTTP/3 ({{!RFC9114}}) connections that refers to either the
 entire connection or a specific stream without changing the semantics of the
 HTTP messages.  This mechanism can be used, for example, to gather information
 for accounting or logging purposes.
