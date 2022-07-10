@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-07-07T00:57:12.893617+00:00",
+  "timestamp": "2022-07-10T00:58:42.498214+00:00",
   "repo": "bencebeky/metadata",
   "labels": [
     {
@@ -191,25 +191,35 @@
       "id": "PR_kwDOHkxoaM4684s6",
       "title": "Improvements",
       "url": "https://github.com/bencebeky/metadata/pull/4",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bencebeky",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "Add emphasis to MAY/MUST/SHOULD.\r\nClarify interleaving frame type and stream requirements.\r\nClarify multiple and incomplete metadata blocks.\r\n\r\nThree separate commits for easier review.",
       "createdAt": "2022-07-06T16:33:21Z",
-      "updatedAt": "2022-07-06T22:50:13Z",
+      "updatedAt": "2022-07-07T15:25:29Z",
       "baseRepository": "bencebeky/metadata",
       "baseRefName": "main",
-      "baseRefOid": "525d3425033c77ed9c5ef4e57d06ddf468d37657",
+      "baseRefOid": "c746bdb07336fcf0227a61b3127efc58664cff42",
       "headRepository": "bencebeky/metadata",
       "headRefName": "frames",
-      "headRefOid": "80f1e3f39fea8d3e3b48156fa0e0d6f8f3fcd3c6",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "headRefOid": "fb40da7751517ffd9eaad8e61a225bc1de12549d",
+      "closedAt": "2022-07-07T15:25:26Z",
+      "mergedAt": "2022-07-07T15:25:26Z",
+      "mergedBy": "bencebeky",
+      "mergeCommit": {
+        "oid": "4b3511438cd6899bf8456c34098fb004bb4b4d6b"
+      },
+      "comments": [
+        {
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "body": "Thank you both for the thorough review.  I'm merging this so that it shows up in tip of tree, but feel free to let me know if you can think of further improvements.",
+          "createdAt": "2022-07-07T15:25:22Z",
+          "updatedAt": "2022-07-07T15:25:22Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOHkxoaM49bf_1",
@@ -298,6 +308,186 @@
               "updatedAt": "2022-07-06T22:50:13Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49f3zQ",
+          "commit": {
+            "abbreviatedOid": "80f1e3f"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-07T15:23:04Z",
+          "updatedAt": "2022-07-07T15:23:04Z",
+          "comments": [
+            {
+              "originalPosition": 20,
+              "body": "Thanks for the suggestion.  I agree that the original wording has room for improvement.  How about \"an endpoint MAY transmit\" instead of the connection transmitting?  I'm also changing \"any number\" to \"multiple\", and adding \"on the same stream\", since the point we are actually trying to convey here is that multiple metadata blocks are allowed.  And changing \"connection or stream\" to \"stream\", since metadata blocks pertaining to the entire connection are also transmitted on a stream (stream 0 in that case).",
+              "createdAt": "2022-07-07T15:23:04Z",
+              "updatedAt": "2022-07-07T15:23:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49f305",
+          "commit": {
+            "abbreviatedOid": "80f1e3f"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-07T15:23:08Z",
+          "updatedAt": "2022-07-07T15:23:11Z",
+          "comments": [
+            {
+              "originalPosition": 53,
+              "body": "Oops.  Good catch!  Fixed both.",
+              "createdAt": "2022-07-07T15:23:08Z",
+              "updatedAt": "2022-07-07T15:23:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49f34U",
+          "commit": {
+            "abbreviatedOid": "80f1e3f"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-07T15:23:16Z",
+          "updatedAt": "2022-07-07T15:23:16Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "Done, except I added \"_only_ the last of which\" to make it explicit that the rest of the frames must not have the flag set.  This might still has room for improvement, let me know if you have any further suggestions.",
+              "createdAt": "2022-07-07T15:23:16Z",
+              "updatedAt": "2022-07-07T15:23:16Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49f353",
+          "commit": {
+            "abbreviatedOid": "80f1e3f"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-07T15:23:20Z",
+          "updatedAt": "2022-07-07T15:23:20Z",
+          "comments": [
+            {
+              "originalPosition": 43,
+              "body": "Done, expect \"the\" instead of \"that\" seems to flow a little better to me, without introducing ambiguity.",
+              "createdAt": "2022-07-07T15:23:20Z",
+              "updatedAt": "2022-07-07T15:23:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49f376",
+          "commit": {
+            "abbreviatedOid": "80f1e3f"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-07T15:23:25Z",
+          "updatedAt": "2022-07-07T15:23:26Z",
+          "comments": [
+            {
+              "originalPosition": 44,
+              "body": "Done.  Also, on second thought, I'm removing the word \"complete\", because it does not add much value.",
+              "createdAt": "2022-07-07T15:23:25Z",
+              "updatedAt": "2022-07-07T15:23:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49f3-W",
+          "commit": {
+            "abbreviatedOid": "80f1e3f"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-07T15:23:31Z",
+          "updatedAt": "2022-07-07T15:23:31Z",
+          "comments": [
+            {
+              "originalPosition": 62,
+              "body": "Done.",
+              "createdAt": "2022-07-07T15:23:31Z",
+              "updatedAt": "2022-07-07T15:23:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49f4AD",
+          "commit": {
+            "abbreviatedOid": "80f1e3f"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-07T15:23:35Z",
+          "updatedAt": "2022-07-07T15:23:36Z",
+          "comments": [
+            {
+              "originalPosition": 77,
+              "body": "Done.",
+              "createdAt": "2022-07-07T15:23:35Z",
+              "updatedAt": "2022-07-07T15:23:36Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49f4Ap",
+          "commit": {
+            "abbreviatedOid": "80f1e3f"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-07T15:23:37Z",
+          "updatedAt": "2022-07-07T15:23:37Z",
+          "comments": [
+            {
+              "originalPosition": 76,
+              "body": "Done.",
+              "createdAt": "2022-07-07T15:23:37Z",
+              "updatedAt": "2022-07-07T15:23:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49f4D3",
+          "commit": {
+            "abbreviatedOid": "80f1e3f"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-07T15:23:44Z",
+          "updatedAt": "2022-07-07T15:23:44Z",
+          "comments": [
+            {
+              "originalPosition": 84,
+              "body": "Done.",
+              "createdAt": "2022-07-07T15:23:44Z",
+              "updatedAt": "2022-07-07T15:23:45Z"
+            }
+          ]
         }
       ]
     },
@@ -306,25 +496,35 @@
       "id": "PR_kwDOHkxoaM469Oom",
       "title": "Expand Abstract and add Acknowledgements.",
       "url": "https://github.com/bencebeky/metadata/pull/5",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bencebeky",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2022-07-06T18:15:45Z",
-      "updatedAt": "2022-07-06T22:56:53Z",
+      "updatedAt": "2022-07-07T14:59:46Z",
       "baseRepository": "bencebeky/metadata",
       "baseRefName": "main",
       "baseRefOid": "525d3425033c77ed9c5ef4e57d06ddf468d37657",
       "headRepository": "bencebeky/metadata",
       "headRefName": "abstract",
-      "headRefOid": "f0696b662a5bba84d664a3e510a1fb9dba27c5ce",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "headRefOid": "5cf0a352878dfd65f71c954cbf4986329e1ddc78",
+      "closedAt": "2022-07-07T14:59:44Z",
+      "mergedAt": "2022-07-07T14:59:44Z",
+      "mergedBy": "bencebeky",
+      "mergeCommit": {
+        "oid": "c746bdb07336fcf0227a61b3127efc58664cff42"
+      },
+      "comments": [
+        {
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "body": "Thank you both for the review.",
+          "createdAt": "2022-07-07T14:59:39Z",
+          "updatedAt": "2022-07-07T14:59:39Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOHkxoaM49bglr",
@@ -362,6 +562,26 @@
               "body": "uber-nit: \"entire connection or to a specific\" (\"to\" for grammatical parallelism).\r\n\r\nmaybe better: \"refers to either the entire connection or a specific stream\" (also has parallelism).",
               "createdAt": "2022-07-06T22:52:01Z",
               "updatedAt": "2022-07-06T22:56:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49fuTd",
+          "commit": {
+            "abbreviatedOid": "f0696b6"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-07T14:58:28Z",
+          "updatedAt": "2022-07-07T14:58:29Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "Oh nice, I always liked parallelism, and now I learned its name!",
+              "createdAt": "2022-07-07T14:58:28Z",
+              "updatedAt": "2022-07-07T14:58:29Z"
             }
           ]
         }
