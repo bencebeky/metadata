@@ -192,10 +192,9 @@ are disallowed.
 ## Denial-of-Service Considerations
 
 Depending on the application, metadata blocks sent over HTTP/2 might be larger
-than the negotiated SETTINGS_MAX_FRAME_SIZE.  Although RFC 9113 does not
-explicitly address extension frames, to facilitate interoperability, endpoints
-_MUST_ respect the SETTINGS_MAX_FRAME_SIZE expressed by the peer when encoding
-METADATA frames.
+than the negotiated SETTINGS_MAX_FRAME_SIZE.  To facilitate interoperability,
+endpoints _MUST_ respect the SETTINGS_MAX_FRAME_SIZE expressed by the peer when
+encoding METADATA frames.
 
 # IANA Considerations
 
