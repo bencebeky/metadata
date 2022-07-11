@@ -1303,9 +1303,10 @@ processing of previous metadata blocks on the same stream or connection.<a href=
 <p id="section-3.1-8">METADATA frames obey the maximum frame size set by SETTINGS_MAX_FRAME_SIZE.<a href="#section-3.1-8" class="pilcrow">¶</a></p>
 <p id="section-3.1-9">METADATA frames are not subject to flow control.<a href="#section-3.1-9" class="pilcrow">¶</a></p>
 <p id="section-3.1-10">The metadata block of an HTTP/2 METADATA frame is encoded using HPACK
-representations (<span>[<a href="#RFC7541" class="xref">RFC7541</a>]</span>).  An endpoint <em><span class="bcp14">MUST NOT</span></em> use any HPACK representations
-that change the dynamic table inside METADATA frames; any METADATA frame with such representations <em><span class="bcp14">SHOULD</span></em>
-be treated as a connection error.<a href="#section-3.1-10" class="pilcrow">¶</a></p>
+representations (<span>[<a href="#RFC7541" class="xref">RFC7541</a>]</span>).  An endpoint <em><span class="bcp14">MUST NOT</span></em> use any HPACK
+representations that change the dynamic table inside METADATA frames; any
+METADATA frame with such representations <em><span class="bcp14">SHOULD</span></em> be treated as a connection
+error.<a href="#section-3.1-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="metadata-http3-frame">
@@ -1334,10 +1335,10 @@ connection.  METADATA frames on a request stream or a push stream are associated
 with the exchange carried by that stream.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
 <p id="section-3.2-4">The metadata block of a HTTP/3 METADATA frame is encoded using QPACK
 representations.  An endpoint <em><span class="bcp14">MUST NOT</span></em> use any QPACK representations that
-reference the dynamic table inside METADATA frames; any METADATA frame with such representations <em><span class="bcp14">SHOULD</span></em>
-be treated as a connection error.  Therefore the Required Insert Count <span class="bcp14">MUST</span> be zero,
-and decoding METADATA frame payloads do not elicit instructions on the QPACK
-decoder stream.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+reference the dynamic table inside METADATA frames; any METADATA frame with such
+representations <em><span class="bcp14">SHOULD</span></em> be treated as a connection error.  Therefore the
+Required Insert Count <span class="bcp14">MUST</span> be zero, and decoding METADATA frame payloads do not
+elicit instructions on the QPACK decoder stream.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
