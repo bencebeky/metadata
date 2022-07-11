@@ -1386,10 +1386,9 @@ are disallowed.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-denial-of-service-considera" class="section-name selfRef">Denial-of-Service Considerations</a>
         </h3>
 <p id="section-5.2-1">Depending on the application, metadata blocks sent over HTTP/2 might be larger
-than the negotiated SETTINGS_MAX_FRAME_SIZE.  Although RFC 9113 does not
-explicitly address extension frames, to facilitate interoperability, endpoints
-<em><span class="bcp14">MUST</span></em> respect the SETTINGS_MAX_FRAME_SIZE expressed by the peer when encoding
-METADATA frames.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+than the negotiated SETTINGS_MAX_FRAME_SIZE.  To facilitate interoperability,
+endpoints <em><span class="bcp14">MUST</span></em> respect the SETTINGS_MAX_FRAME_SIZE expressed by the peer when
+encoding METADATA frames.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
