@@ -1035,7 +1035,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Béky &amp; Roy</td>
-<td class="center">Expires 8 January 2023</td>
+<td class="center">Expires 12 January 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1048,12 +1048,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-beky-httpbis-metadata-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-07-07" class="published">7 July 2022</time>
+<time datetime="2022-07-11" class="published">11 July 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-01-08">8 January 2023</time></dd>
+<dd class="expires"><time datetime="2023-01-12">12 January 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1106,7 +1106,7 @@ for accounting or logging purposes.<a href="#section-abstract-1" class="pilcrow"
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 January 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 12 January 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1229,9 +1229,10 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <p id="section-3-1">Both HTTP/2 and HTTP/3 specifications allow the protocol to be extended, see
 <span><a href="https://rfc-editor.org/rfc/rfc9113#section-5.5" class="relref">Section 5.5</a> of [<a href="#RFC9113" class="xref">RFC9113</a>]</span> and <span><a href="https://rfc-editor.org/rfc/rfc9114#section-9" class="relref">Section 9</a> of [<a href="#RFC9114" class="xref">RFC9114</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">This document defines a new frame type: METADATA.<a href="#section-3-2" class="pilcrow">¶</a></p>
-<p id="section-3-3">The payload of a sequence of METADATA frames is a metadata block, which is an
-encoded list of key-value pairs.  Each key and value is a sequence of bytes with
-no restriction on the allowed values.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-3">The METADATA frame can be used to transmit a metadata block, which is an encoded
+list of key-value pairs. Each key and value is a sequence of bytes with no
+restriction on the allowed values. The encoded block is packaged as the payload
+of one or more frames.<a href="#section-3-3" class="pilcrow">¶</a></p>
 <p id="section-3-4">An endpoint <em><span class="bcp14">MAY</span></em> transmit multiple metadata blocks on the same stream.<a href="#section-3-4" class="pilcrow">¶</a></p>
 <p id="section-3-5">METADATA frames do not change HTTP semantics.<a href="#section-3-5" class="pilcrow">¶</a></p>
 <div id="metadata-http2-frame">
@@ -1239,7 +1240,7 @@ no restriction on the allowed values.<a href="#section-3-3" class="pilcrow">¶</
         <h3 id="name-metadata-http-2-frame">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-metadata-http-2-frame" class="section-name selfRef">METADATA HTTP/2 frame</a>
         </h3>
-<p id="section-3.1-1">The type of METADATA HTTP/2 frame is 0x4d.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-1">The type of the METADATA HTTP/2 frame is 0x4d.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 <span id="name-metadata-http-2-frame-2"></span><figure id="figure-1">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-3.1-2.1">
 <pre>

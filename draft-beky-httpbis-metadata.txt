@@ -5,7 +5,7 @@
 HTTP                                                             B. Béky
 Internet-Draft                                                    B. Roy
 Intended status: Standards Track                              Google LLC
-Expires: 8 January 2023                                      7 July 2022
+Expires: 12 January 2023                                    11 July 2022
 
 
                   METADATA frame for HTTP/2 and HTTP/3
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 January 2023.
+   This Internet-Draft will expire on 12 January 2023.
 
 Copyright Notice
 
@@ -112,9 +112,10 @@ Table of Contents
 
    This document defines a new frame type: METADATA.
 
-   The payload of a sequence of METADATA frames is a metadata block,
-   which is an encoded list of key-value pairs.  Each key and value is a
-   sequence of bytes with no restriction on the allowed values.
+   The METADATA frame can be used to transmit a metadata block, which is
+   an encoded list of key-value pairs.  Each key and value is a sequence
+   of bytes with no restriction on the allowed values.  The encoded
+   block is packaged as the payload of one or more frames.
 
    An endpoint _MAY_ transmit multiple metadata blocks on the same
    stream.
@@ -123,7 +124,7 @@ Table of Contents
 
 3.1.  METADATA HTTP/2 frame
 
-   The type of METADATA HTTP/2 frame is 0x4d.
+   The type of the METADATA HTTP/2 frame is 0x4d.
 
    METADATA HTTP/2 Frame {
      Length (24),
