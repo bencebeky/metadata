@@ -70,6 +70,8 @@ Table of Contents
      3.2.  METADATA HTTP/3 frame
    4.  Negotiating METADATA
    5.  Security Considerations
+     5.1.  Compression State Corruption
+     5.2.  Denial-of-Service Considerations
    6.  IANA Considerations
      6.1.  HTTP/2
      6.2.  HTTP/3
@@ -177,8 +179,10 @@ Table of Contents
    METADATA frames are not subject to flow control.
 
    The metadata block of an HTTP/2 METADATA frame is encoded using HPACK
-   instructions ([RFC7541]).  An endpoint _MUST NOT_ use any HPACK
-   instructions that change the dynamic table.
+   representations ([RFC7541]).  An endpoint _MUST NOT_ use any HPACK
+   representations that change the dynamic table inside METADATA frames;
+   any METADATA frame with such representations _SHOULD_ be treated as a
+   connection error.
 
 3.2.  METADATA HTTP/3 frame
 
@@ -200,9 +204,11 @@ Table of Contents
 
    The metadata block of a HTTP/3 METADATA frame is encoded using QPACK
    representations.  An endpoint _MUST NOT_ use any QPACK
-   representations that reference the dynamic table.  Therefore the
-   Required Insert Count is be zero, and decoding METADATA frame
-   payloads do not elicit instructions on the QPACK decoder stream.
+   representations that reference the dynamic table inside METADATA
+   frames; any METADATA frame with such representations _SHOULD_ be
+   treated as a connection error.  Therefore the Required Insert Count
+   MUST be zero, and decoding METADATA frame payloads do not elicit
+   instructions on the QPACK decoder stream.
 
 4.  Negotiating METADATA
 
@@ -226,7 +232,23 @@ Table of Contents
 
 5.  Security Considerations
 
-   TODO Security
+5.1.  Compression State Corruption
+
+   Since metadata blocks are encoded using HPACK or QPACK, they create
+   the possibility of changes to the compression state of a connection.
+   However, METADATA frames are extension frames, and might be dropped
+   by implementations or intermediaries.  To avoid the problem of
+   compression state desynchronization between endpoints, HPACK or QPACK
+   representations that change compression state are disallowed.
+
+5.2.  Denial-of-Service Considerations
+
+   Depending on the application, metadata blocks sent over HTTP/2 might
+   be larger than the negotiated SETTINGS_MAX_FRAME_SIZE.  Although RFC
+   9113 does not explicitly address extension frames, to facilitate
+   interoperability, endpoints _MUST_ respect the
+   SETTINGS_MAX_FRAME_SIZE expressed by the peer when encoding METADATA
+   frames.
 
 6.  IANA Considerations
 
