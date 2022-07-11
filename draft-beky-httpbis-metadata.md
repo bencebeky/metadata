@@ -154,7 +154,7 @@ with the exchange carried by that stream.
 The metadata block of a HTTP/3 METADATA frame is encoded using QPACK
 representations.  An endpoint _MUST NOT_ use any QPACK representations that
 reference the dynamic table; any METADATA frame with such representations _SHOULD_
-be treated as a connection error.  Therefore the Required Insert Count is be zero,
+be treated as a connection error.  Therefore the Required Insert Count MUST be zero,
 and decoding METADATA frame payloads do not elicit instructions on the QPACK
 decoder stream.
 
