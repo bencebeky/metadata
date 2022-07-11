@@ -256,8 +256,20 @@ with the following parameters:
 **Frame Type:**
   : METADATA
 
+**Status**:
+  : provisional (permanent if this document is approved)
+
 **Reference:**
   : This Document
+
+**Change Controller**:
+  : IETF
+
+**Contact**:
+  : HTTP_WG; HTTP working group; ietf-http-wg@w3.org
+
+**Notes**:
+  : None
 
 ## HTTP/3 Setting
 
@@ -274,8 +286,20 @@ with the following parameters:
 **Default:**
   : 0
 
+**Status**:
+  : provisional (permanent if this document is approved)
+
 **Reference:**
   : This Document
+
+**Change Controller**:
+  : IETF
+
+**Contact**:
+  : HTTP_WG; HTTP working group; ietf-http-wg@w3.org
+
+**Notes**:
+  : None
 
 
 --- back
