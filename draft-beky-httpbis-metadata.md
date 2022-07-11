@@ -68,9 +68,10 @@ Both HTTP/2 and HTTP/3 specifications allow the protocol to be extended, see
 
 This document defines a new frame type: METADATA.
 
-The payload of a sequence of METADATA frames is a metadata block, which is an
-encoded list of key-value pairs.  Each key and value is a sequence of bytes with
-no restriction on the allowed values.
+The METADATA frame can be used to transmit a metadata block, which is an encoded
+list of key-value pairs. Each key and value is a sequence of bytes with no
+restriction on the allowed values. The encoded block is packaged as the payload
+of one or more frames.
 
 An endpoint _MAY_ transmit multiple metadata blocks on the same stream.
 
@@ -78,7 +79,7 @@ METADATA frames do not change HTTP semantics.
 
 ## METADATA HTTP/2 frame
 
-The type of METADATA HTTP/2 frame is 0x4d.
+The type of the METADATA HTTP/2 frame is 0x4d.
 
 ~~~~~~~~~~ ascii-art
 METADATA HTTP/2 Frame {
