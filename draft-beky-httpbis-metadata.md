@@ -129,7 +129,7 @@ METADATA frames are not subject to flow control.
 
 The metadata block of an HTTP/2 METADATA frame is encoded using HPACK
 representations ({{!RFC7541}}).  An endpoint _MUST NOT_ use any HPACK representations
-that change the dynamic table; any METADATA frame with such representations _SHOULD_
+that change the dynamic table inside METADATA frames; any METADATA frame with such representations _SHOULD_
 be treated as a connection error.
 
 ## METADATA HTTP/3 frame
