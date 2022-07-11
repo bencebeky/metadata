@@ -263,10 +263,10 @@ with the following parameters:
   : This Document
 
 **Change Controller**:
-  : IETF
+  : Bence Béky (IETF if this document is approved)
 
 **Contact**:
-  : HTTP_WG; HTTP working group; ietf-http-wg@w3.org
+  : bnc@google.com (HTTP_WG; HTTP working group; ietf-http-wg@w3.org if this document is approved)
 
 **Notes**:
   : None
@@ -293,10 +293,10 @@ with the following parameters:
   : This Document
 
 **Change Controller**:
-  : IETF
+  : Bence Béky (IETF if this document is approved)
 
 **Contact**:
-  : HTTP_WG; HTTP working group; ietf-http-wg@w3.org
+  : bnc@google.com (HTTP_WG; HTTP working group; ietf-http-wg@w3.org if this document is approved)
 
 **Notes**:
   : None
