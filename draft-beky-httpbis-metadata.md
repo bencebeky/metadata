@@ -129,9 +129,10 @@ METADATA frames obey the maximum frame size set by SETTINGS_MAX_FRAME_SIZE.
 METADATA frames are not subject to flow control.
 
 The metadata block of an HTTP/2 METADATA frame is encoded using HPACK
-representations ({{!RFC7541}}).  An endpoint _MUST NOT_ use any HPACK representations
-that change the dynamic table inside METADATA frames; any METADATA frame with such representations _SHOULD_
-be treated as a connection error.
+representations ({{!RFC7541}}).  An endpoint _MUST NOT_ use any HPACK
+representations that change the dynamic table inside METADATA frames; any
+METADATA frame with such representations _SHOULD_ be treated as a connection
+error.
 
 ## METADATA HTTP/3 frame
 
@@ -154,10 +155,10 @@ with the exchange carried by that stream.
 
 The metadata block of a HTTP/3 METADATA frame is encoded using QPACK
 representations.  An endpoint _MUST NOT_ use any QPACK representations that
-reference the dynamic table inside METADATA frames; any METADATA frame with such representations _SHOULD_
-be treated as a connection error.  Therefore the Required Insert Count MUST be zero,
-and decoding METADATA frame payloads do not elicit instructions on the QPACK
-decoder stream.
+reference the dynamic table inside METADATA frames; any METADATA frame with such
+representations _SHOULD_ be treated as a connection error.  Therefore the
+Required Insert Count MUST be zero, and decoding METADATA frame payloads do not
+elicit instructions on the QPACK decoder stream.
 
 # Negotiating METADATA
 
