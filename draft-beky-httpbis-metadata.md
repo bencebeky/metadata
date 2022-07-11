@@ -128,8 +128,9 @@ METADATA frames obey the maximum frame size set by SETTINGS_MAX_FRAME_SIZE.
 METADATA frames are not subject to flow control.
 
 The metadata block of an HTTP/2 METADATA frame is encoded using HPACK
-instructions ({{!RFC7541}}).  An endpoint _MUST NOT_ use any HPACK instructions
-that change the dynamic table.
+representations ({{!RFC7541}}).  An endpoint _MUST NOT_ use any HPACK representations
+that change the dynamic table; any METADATA frame with such representations _SHOULD_
+be treated as a connection error.
 
 ## METADATA HTTP/3 frame
 
@@ -152,7 +153,8 @@ with the exchange carried by that stream.
 
 The metadata block of a HTTP/3 METADATA frame is encoded using QPACK
 representations.  An endpoint _MUST NOT_ use any QPACK representations that
-reference the dynamic table.  Therefore the Required Insert Count is be zero,
+reference the dynamic table; any METADATA frame with such representations _SHOULD_
+be treated as a connection error.  Therefore the Required Insert Count is be zero,
 and decoding METADATA frame payloads do not elicit instructions on the QPACK
 decoder stream.
 
@@ -176,8 +178,22 @@ NOT_ send METADATA frames after it learns that the peer does not support them.
 
 # Security Considerations
 
-TODO Security
+## Compression State Corruption
 
+Since metadata blocks are encoded using HPACK or QPACK, they create the
+possibility of changes to the compression state of a connection.  However,
+METADATA frames are extension frames, and might be dropped by implementations or
+intermediaries.  To avoid the problem of compression state desynchronization
+between endpoints, HPACK or QPACK representations that change compression state
+are disallowed.
+
+## Denial-of-Service Considerations
+
+Depending on the application, metadata blocks sent over HTTP/2 might be larger
+than the negotiated SETTINGS_MAX_FRAME_SIZE.  Although RFC 9113 does not
+explicitly address extension frames, to facilitate interoperability, endpoints
+_MUST_ respect the SETTINGS_MAX_FRAME_SIZE expressed by the peer when encoding
+METADATA frames.
 
 # IANA Considerations
 
