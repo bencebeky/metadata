@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-07-10T00:58:42.498214+00:00",
+  "timestamp": "2022-07-12T00:57:07.627851+00:00",
   "repo": "bencebeky/metadata",
   "labels": [
     {
@@ -584,6 +584,287 @@
               "updatedAt": "2022-07-07T14:58:29Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOHkxoaM47Kh1_",
+      "title": "Slightly improved wording of HTTP/2 metadata frame payload description.",
+      "url": "https://github.com/bencebeky/metadata/pull/6",
+      "state": "MERGED",
+      "author": "birenroy",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "@bencebeky @diannahu Please take a look!",
+      "createdAt": "2022-07-11T03:26:12Z",
+      "updatedAt": "2022-07-11T11:50:27Z",
+      "baseRepository": "bencebeky/metadata",
+      "baseRefName": "main",
+      "baseRefOid": "4b3511438cd6899bf8456c34098fb004bb4b4d6b",
+      "headRepository": "birenroy/metadata",
+      "headRefName": "wordsmithing",
+      "headRefOid": "896d13c5220eb5089b7f4dffe59f46438a24b48a",
+      "closedAt": "2022-07-11T11:50:27Z",
+      "mergedAt": "2022-07-11T11:50:26Z",
+      "mergedBy": "bencebeky",
+      "mergeCommit": {
+        "oid": "0f8de90e0972c98936c9d21300ff5d9d8cbc681b"
+      },
+      "comments": [
+        {
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "body": "Thank you for the improvements!",
+          "createdAt": "2022-07-11T11:50:22Z",
+          "updatedAt": "2022-07-11T11:50:22Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOHkxoaM47NVdT",
+      "title": "Added initial security considerations.",
+      "url": "https://github.com/bencebeky/metadata/pull/7",
+      "state": "MERGED",
+      "author": "birenroy",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "First pass at the section on security considerations.",
+      "createdAt": "2022-07-11T17:10:49Z",
+      "updatedAt": "2022-07-11T18:00:41Z",
+      "baseRepository": "bencebeky/metadata",
+      "baseRefName": "main",
+      "baseRefOid": "0f8de90e0972c98936c9d21300ff5d9d8cbc681b",
+      "headRepository": "birenroy/metadata",
+      "headRefName": "security",
+      "headRefOid": "32f9b93b93d61b66a40a4afa106db74c2b6c1fce",
+      "closedAt": "2022-07-11T18:00:41Z",
+      "mergedAt": "2022-07-11T18:00:41Z",
+      "mergedBy": "bencebeky",
+      "mergeCommit": {
+        "oid": "1e0f10ffb842e2eb79d31bbedfbcfcffe1678114"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHkxoaM49rBdK",
+          "commit": {
+            "abbreviatedOid": "2edccc7"
+          },
+          "author": "diannahu",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Looks great!",
+          "createdAt": "2022-07-11T17:20:42Z",
+          "updatedAt": "2022-07-11T17:20:42Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49rJsu",
+          "commit": {
+            "abbreviatedOid": "2edccc7"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-11T17:48:57Z",
+          "updatedAt": "2022-07-11T17:51:05Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\nthat change the dynamic table inside METADATA frames; any METADATA frame with such representations _SHOULD_\r\n```",
+              "createdAt": "2022-07-11T17:48:57Z",
+              "updatedAt": "2022-07-11T17:51:06Z"
+            },
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\r\nreference the dynamic table inside METADATA frames; any METADATA frame with such representations _SHOULD_\r\n```",
+              "createdAt": "2022-07-11T17:49:15Z",
+              "updatedAt": "2022-07-11T17:51:06Z"
+            },
+            {
+              "originalPosition": 18,
+              "body": "```suggestion\r\nbe treated as a connection error.  Therefore the Required Insert Count MUST be zero,\r\n```",
+              "createdAt": "2022-07-11T17:49:35Z",
+              "updatedAt": "2022-07-11T17:51:06Z"
+            },
+            {
+              "originalPosition": 39,
+              "body": "RFC 9113 states that SETTINGS_MAX_FRAME_SIZE applies to all frames. I read that as applying to extension frames as well.",
+              "createdAt": "2022-07-11T17:51:01Z",
+              "updatedAt": "2022-07-11T17:51:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49rNcB",
+          "commit": {
+            "abbreviatedOid": "32f9b93"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-11T18:00:12Z",
+          "updatedAt": "2022-07-11T18:00:12Z",
+          "comments": [
+            {
+              "originalPosition": 39,
+              "body": "This is a good point.  However, RFC 9113 does not explicitly disallow extensions from modifying the protocol is such a way that new frames are exempt from SETTINGS_MAX_FRAME_SIZE, neither in Section 4.2 nor in Section 5.5.  One might interpret Section 5.5 as \"all bets are off\" regarding extensions as long as interoperability with existing compliant implementations is not compromised.  So there might be some room for interpretation here.\r\n\r\nI think it is worth making it explicit here that METADATA frames are subject to SETTINGS_MAX_FRAME_SIZE.  However, I suggest softening up the language and not making a statement about what RFC 9113 states in this regard.",
+              "createdAt": "2022-07-11T18:00:12Z",
+              "updatedAt": "2022-07-11T18:00:12Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "PR_kwDOHkxoaM47NiQM",
+      "title": "Remove statement about what RFC9113 states about frame payload limit on extension frames.",
+      "url": "https://github.com/bencebeky/metadata/pull/8",
+      "state": "MERGED",
+      "author": "bencebeky",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-07-11T18:09:31Z",
+      "updatedAt": "2022-07-11T21:54:51Z",
+      "baseRepository": "bencebeky/metadata",
+      "baseRefName": "main",
+      "baseRefOid": "a2f5cdc28ac9bd6725f912c1b481a9a2c5cd1b77",
+      "headRepository": "bencebeky/metadata",
+      "headRefName": "frame-limit",
+      "headRefOid": "7bfa30764588f30177272ee7382227e5fdaa7d69",
+      "closedAt": "2022-07-11T18:26:46Z",
+      "mergedAt": "2022-07-11T18:26:46Z",
+      "mergedBy": "bencebeky",
+      "mergeCommit": {
+        "oid": "1473625838d106689754ba487a2a6c56ed31d663"
+      },
+      "comments": [
+        {
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "body": "Thank you both for the review.",
+          "createdAt": "2022-07-11T18:26:53Z",
+          "updatedAt": "2022-07-11T18:26:53Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHkxoaM49rRh6",
+          "commit": {
+            "abbreviatedOid": "7bfa307"
+          },
+          "author": "birenroy",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM, thank you.",
+          "createdAt": "2022-07-11T18:15:41Z",
+          "updatedAt": "2022-07-11T18:15:41Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49rSl_",
+          "commit": {
+            "abbreviatedOid": "7bfa307"
+          },
+          "author": "diannahu",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-07-11T18:19:50Z",
+          "updatedAt": "2022-07-11T18:19:50Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOHkxoaM47Np5Y",
+      "title": "Minor tweaks",
+      "url": "https://github.com/bencebeky/metadata/pull/9",
+      "state": "MERGED",
+      "author": "DavidSchinazi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-07-11T18:44:13Z",
+      "updatedAt": "2022-07-11T19:01:42Z",
+      "baseRepository": "bencebeky/metadata",
+      "baseRefName": "main",
+      "baseRefOid": "1473625838d106689754ba487a2a6c56ed31d663",
+      "headRepository": null,
+      "headRefName": "initial",
+      "headRefOid": "762ef5dec6a07dbc994e8a37e6236298013244b7",
+      "closedAt": "2022-07-11T19:01:39Z",
+      "mergedAt": "2022-07-11T19:01:39Z",
+      "mergedBy": "DavidSchinazi",
+      "mergeCommit": {
+        "oid": "3bea881f5c9b810f816f9117aadd362f51cea2d7"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHkxoaM49rb79",
+          "commit": {
+            "abbreviatedOid": "e0287be"
+          },
+          "author": "birenroy",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Just the one question about the markdown formatting.",
+          "createdAt": "2022-07-11T18:54:28Z",
+          "updatedAt": "2022-07-11T18:56:36Z",
+          "comments": [
+            {
+              "originalPosition": 92,
+              "body": "What is the reasoning for the removal of emphasis in the various places here and below? Just editorial taste, or some other criteria?",
+              "createdAt": "2022-07-11T18:54:28Z",
+              "updatedAt": "2022-07-11T18:56:36Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49rcuG",
+          "commit": {
+            "abbreviatedOid": "e0287be"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-07-11T18:57:28Z",
+          "updatedAt": "2022-07-11T18:57:29Z",
+          "comments": [
+            {
+              "originalPosition": 92,
+              "body": "The tools automatically add emphasis, so we should follow the usual practice to make sure we get the automatic tooling",
+              "createdAt": "2022-07-11T18:57:28Z",
+              "updatedAt": "2022-07-11T18:57:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHkxoaM49rc1l",
+          "commit": {
+            "abbreviatedOid": "e0287be"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "Thank you!",
+          "createdAt": "2022-07-11T18:57:54Z",
+          "updatedAt": "2022-07-11T18:57:54Z",
+          "comments": []
         }
       ]
     }
