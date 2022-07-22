@@ -64,9 +64,8 @@ whole.  Applications may wish to provide such information without affecting HTTP
 messages themselves. These are some non-exhaustive examples of use cases that
 may be well served by the METADATA frame.
 
-An HTTP intermediary MAY consume METADATA frames, pass them along unmodified, modify the
-payloads, or emit new METADATA frames, depending on the specific needs of the
-application.
+METADATA frames convey information to the next hop; they are explicitly not designed
+as an end-to-end mechanism.
 
 # Conventions and Definitions
 
