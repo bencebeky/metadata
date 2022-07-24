@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-07-21T00:56:45.149352+00:00",
+  "timestamp": "2022-07-24T00:58:20.923185+00:00",
   "repo": "bencebeky/metadata",
   "labels": [
     {
@@ -864,6 +864,140 @@
           "body": "Thank you!",
           "createdAt": "2022-07-11T18:57:54Z",
           "updatedAt": "2022-07-11T18:57:54Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOHkxoaM479hbG",
+      "title": "Makes the hop-by-hop nature of METADATA clear.",
+      "url": "https://github.com/bencebeky/metadata/pull/10",
+      "state": "MERGED",
+      "author": "birenroy",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-07-22T16:46:29Z",
+      "updatedAt": "2022-07-22T18:24:43Z",
+      "baseRepository": "bencebeky/metadata",
+      "baseRefName": "main",
+      "baseRefOid": "3bea881f5c9b810f816f9117aadd362f51cea2d7",
+      "headRepository": "birenroy/metadata",
+      "headRefName": "hop-by-hop",
+      "headRefOid": "e575174dd95215c0586d8c1ccdffa43eaddf9d53",
+      "closedAt": "2022-07-22T18:24:42Z",
+      "mergedAt": "2022-07-22T18:24:42Z",
+      "mergedBy": "bencebeky",
+      "mergeCommit": {
+        "oid": "97abfa4ec13a322ac6667df0c99b0f27156272c1"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHkxoaM4-edef",
+          "commit": {
+            "abbreviatedOid": "e575174"
+          },
+          "author": "diannahu",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Looks good!",
+          "createdAt": "2022-07-22T16:55:29Z",
+          "updatedAt": "2022-07-22T16:55:29Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHkxoaM4-ehEA",
+          "commit": {
+            "abbreviatedOid": "e575174"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-07-22T17:09:52Z",
+          "updatedAt": "2022-07-22T17:09:52Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHkxoaM4-eiZE",
+          "commit": {
+            "abbreviatedOid": "e575174"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-07-22T17:15:34Z",
+          "updatedAt": "2022-07-22T17:15:34Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "PR_kwDOHkxoaM4799t0",
+      "title": "Removes unnecessary language about sending METADATA before negotiation.",
+      "url": "https://github.com/bencebeky/metadata/pull/11",
+      "state": "OPEN",
+      "author": "birenroy",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The original HTTP/2 specification that endpoints may send frames of unknown types, so the language isn't necessary here.\r\n\r\nThis also removes mention of \"forwarding\" METADATA, which we don't need to include.",
+      "createdAt": "2022-07-22T19:34:04Z",
+      "updatedAt": "2022-07-22T20:05:43Z",
+      "baseRepository": "bencebeky/metadata",
+      "baseRefName": "main",
+      "baseRefOid": "97abfa4ec13a322ac6667df0c99b0f27156272c1",
+      "headRepository": "birenroy/metadata",
+      "headRefName": "buffer-fix",
+      "headRefOid": "89ec4c946831afc5381d824aef6b175001dde2bf",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHkxoaM4-fC8D",
+          "commit": {
+            "abbreviatedOid": "89ec4c9"
+          },
+          "author": "diannahu",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-07-22T19:37:09Z",
+          "updatedAt": "2022-07-22T19:37:09Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHkxoaM4-fHH4",
+          "commit": {
+            "abbreviatedOid": "89ec4c9"
+          },
+          "author": "bencebeky",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "Do we want to say something about sending METADATA frames before the endpoint learns that the peer supports them?  We know from client-side experience that servers generally do not tolerate unknown frames well.",
+          "createdAt": "2022-07-22T19:57:56Z",
+          "updatedAt": "2022-07-22T19:57:56Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHkxoaM4-fIrm",
+          "commit": {
+            "abbreviatedOid": "89ec4c9"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-07-22T20:05:43Z",
+          "updatedAt": "2022-07-22T20:05:43Z",
           "comments": []
         }
       ]
