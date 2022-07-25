@@ -185,10 +185,7 @@ the default value is 0.  For HTTP/2,
 SETTINGS_ENABLE_METADATA MUST NOT be sent in any SETTINGS frame other than the
 first one.
 
-An endpoint MAY send METADATA frames before it learns that the peer supports
-them.  For example, an HTTP intermediary might chose to forward METADATA frames, or it might
-chose to buffer them, before it receives a SETTINGS frame.  An endpoint SHOULD
-NOT send METADATA frames after it learns that the peer does not support them.
+An endpoint SHOULD NOT send METADATA frames if it learns that the peer does not support them.
 
 # Security Considerations
 
