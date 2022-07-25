@@ -5,7 +5,7 @@
 HTTP                                                             B. Béky
 Internet-Draft                                                    B. Roy
 Intended status: Standards Track                              Google LLC
-Expires: 23 January 2023                                    22 July 2022
+Expires: 26 January 2023                                    25 July 2022
 
 
                   METADATA frame for HTTP/2 and HTTP/3
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 January 2023.
+   This Internet-Draft will expire on 26 January 2023.
 
 Copyright Notice
 
@@ -229,11 +229,8 @@ Table of Contents
    SETTINGS_ENABLE_METADATA MUST NOT be sent in any SETTINGS frame other
    than the first one.
 
-   An endpoint MAY send METADATA frames before it learns that the peer
-   supports them.  For example, an HTTP intermediary might chose to
-   forward METADATA frames, or it might chose to buffer them, before it
-   receives a SETTINGS frame.  An endpoint SHOULD NOT send METADATA
-   frames after it learns that the peer does not support them.
+   An endpoint SHOULD NOT send METADATA frames if it learns that the
+   peer does not support them.
 
 5.  Security Considerations
 
