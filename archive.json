@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-09-01T00:55:51.316079+00:00",
+  "timestamp": "2022-09-04T00:57:15.977207+00:00",
   "repo": "bencebeky/metadata",
   "labels": [
     {
@@ -24,14 +24,14 @@
       "color": "a2eeef"
     },
     {
-      "name": "help wanted",
-      "description": "Extra attention is needed",
-      "color": "008672"
-    },
-    {
       "name": "good first issue",
       "description": "Good for newcomers",
       "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
     },
     {
       "name": "invalid",
